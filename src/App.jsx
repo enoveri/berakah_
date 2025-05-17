@@ -9,6 +9,13 @@ import LeadershipPage from "./pages/LeadershipPage";
 import LocationsPage from "./pages/LocationsPage";
 import GenerosityPage from "./pages/GenerosityPage";
 import CellFamilyPage from "./pages/CellFamilyPage";
+import PartnersPage from "./pages/PartnersPage";
+import SponsorChildPage from "./pages/SponsorChildPage";
+import SponsorChildDetailPage from "./pages/SponsorChildDetailPage";
+import DonatePage from "./pages/DonatePage";
+import MinistryNeedsPage from "./pages/MinistryNeedsPage";
+import StatementOfFaithPage from "./pages/StatementOfFaithPage";
+import StoriesOfImpactPage from "./pages/StoriesOfImpactPage";
 
 function App() {
   return (
@@ -24,6 +31,15 @@ function App() {
             <Route path="/locations" element={<LocationsPage />} />
             <Route path="/generosity" element={<GenerosityPage />} />
             <Route path="/cell-family" element={<CellFamilyPage />} />
+            <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/sponsor" element={<PartnersPage />} />
+            <Route path="/donate" element={<DonatePage />} />
+            <Route path="/ministry-needs" element={<MinistryNeedsPage />} />
+            <Route path="/sponsor-child" element={<SponsorChildPage />} />
+            <Route path="/sponsor-child/:childName" element={<SponsorChildDetailPage />} />
+            <Route path="/statement-of-faith" element={<StatementOfFaithPage />} />
+            <Route path="/call2prayer" element={<StatementOfFaithPage />} />
+            <Route path="/stories-of-impact" element={<StoriesOfImpactPage />} />
             {/* Add more routes as you create more pages */}
             <Route path="*" element={
               <div className="flex items-center justify-center min-h-screen bg-gray-100">

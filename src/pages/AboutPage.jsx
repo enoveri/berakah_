@@ -1,12 +1,66 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
+  // Ministry sections data
+  const ministrySections = [
+    {
+      id: 1,
+      title: "International Great Faith Ministries (IGFM)",
+      description: "The International Great Faith Ministries (IGFM) is committed to reaching out to every unreached people group, addressing both their spiritual and physical needs. Our efforts include Church Planting, Evangelism, Leadership Development, and the provision of care for vulnerable individuals and orphaned children through Berakhah Childcare.",
+      link: "/about-igfm"
+    },
+    {
+      id: 2,
+      title: "BERAKHAH CHILDCARE",
+      description: "Berakhah Childcare exists to care for orphaned and vulnerable children in Uganda's rural villages providing for their physical, emotional, Spiritual and educational needs empowering them to become Uganda's future leaders.\n\nBerakhah childcare home in Busamaga- Buwalasi 14km or 9miles North of Mbale town in Uganda is where orphaned and vulnerable children find the much needed love and care and the home of Berakhah Children's Choir.",
+      link: "/berakhah-childcare"
+    },
+    {
+      id: 3,
+      title: "BERAKHAH CHOIR",
+      description: "Berakhah Children's Choir travels to different places performing unique cultural music and dances, sharing their life changing stories and testimonies while developing their talents but at the same time creating awareness of the plight of orphans and vulnerable children in the rural villages of Uganda.",
+      link: "/berakhah-choir"
+    },
+    {
+      id: 4,
+      title: "CALL2PRAYER MBALE CHURCH",
+      description: "A church after God's heart committed to evangelism, loving God, loving people and changing lives.\nWe are located in Mbale-City 900m From Mbale S.S on Kakungulu Drive Half London Area.",
+      link: "/call2prayer"
+    },
+    {
+      id: 5,
+      title: "PASTORS NETWORK - UGANDA",
+      description: "Pastor Paul Gidudu envisions supporting pastors and their families in their ministry to the masses. This dream gave rise to Pastor's Network Uganda, a platform that provides training, encouragement, empowerment, exposure, and sponsorship to fulfill the crucial need of supporting pastors and their families in their noble endeavors.",
+      link: "/pastors-network"
+    },
+    {
+      id: 6,
+      title: "CHURCH PLANTING",
+      description: "We at IGFM are passionate and greatly committed to the Great commission of making disciples (Matt 28:19) partnering with over 1,000 Pastors to plant new Churches that plant other Churches in Uganda and beyond.\n\nFor Spiritual growth and Discipleship to happen in the communities we serve, there is a need for Places of Worship, hence our commitment to helping with church construction.",
+      link: "/church-planting"
+    },
+    {
+      id: 7,
+      title: "WIDOWS AND ELDERLY CARE",
+      description: "Widows and Elderly care is a cause that is incredibly close to our hearts here at IGFM and Berakhah. In many communities where we work, access to social services is nonexistent. This leaves widows and vulnerable elderly individuals without the most basic necessities, such as medical care and even food. It's a heartbreaking reality that some are left to starve to death simply because there are no support systems in place.",
+      link: "/widows-elderly-care"
+    },
+    {
+      id: 8,
+      title: "CHILDREN'S CHURCH",
+      description: "Mat 19:14 But Jesus said, Let the children come to me. Don't stop them!\n\nAt IGFM, we believe children are a major mission field where we have found by experience the harvest to be plenty yet the laborers are indeed few.\n\nIn the communities we serve, we see a generation of children in need of guidance, love, and spiritual care. Now more than ever, it is crucial for us to provide a safe place where they can encounter the transformative power of God's love. It is our responsibility, as stewards of God's grace, to rise to this challenge and labor fervently to make sure every child is given an opportunity to hear the gospel.",
+      link: "/childrens-church"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">About Berakah Church</h1>
-          
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">About Us</h1>
+
+          {/* Vision and Mission Section */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
             <div className="h-64 bg-blue-200 flex items-center justify-center">
               {/* This would be replaced with an actual image */}
@@ -19,7 +73,7 @@ const AboutPage = () => {
                 growing and multiplying as each one reaches one; touching those around us with the
                 love of Jesus, bringing healing to the cities and the nations.
               </p>
-              
+
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
               <p className="text-gray-600 mb-6">
                 To be a loving family sharing Christ with the world, by:
@@ -30,7 +84,7 @@ const AboutPage = () => {
                 <li>Expanding God's Kingdom through evangelism and church planting</li>
                 <li>Extending compassion through community development and social justice initiatives</li>
               </ul>
-              
+
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Values</h2>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
                 <li><strong>Bible-based teaching:</strong> We are committed to the Word of God as our foundation and guide.</li>
@@ -41,6 +95,30 @@ const AboutPage = () => {
                 <li><strong>Compassionate outreach:</strong> We demonstrate God's love through practical care.</li>
               </ul>
             </div>
+          </div>
+
+          {/* Ministry Sections */}
+          <h2 className="text-3xl font-bold text-blue-600 mb-8 text-center">Our Ministries</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {ministrySections.map((section) => (
+              <div
+                key={section.id}
+                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <div className="p-6">
+                  <h2 className="text-2xl font-bold text-blue-600 mb-4">{section.title}</h2>
+                  <div className="text-gray-700 mb-4 whitespace-pre-line">
+                    {section.description}
+                  </div>
+                  <Link
+                    to={section.link}
+                    className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
+                  >
+                    MORE
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
