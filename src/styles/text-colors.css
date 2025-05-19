@@ -55,9 +55,23 @@ footer .text-center {
 }
 
 /* Exception for links */
-a:not(.btn):not(.button):not(footer a) {
+a:not(.btn):not(.button):not(footer a):not([class*="bg-"]):not([class*="rounded"]):not([class*="px-"]):not([class*="py-"]) {
   color: #000000 !important; /* Black text for links */
   text-decoration: underline; /* Add underline to links for better visibility */
+}
+
+/* Remove underlines from button-like links */
+a.btn,
+a.button,
+a[class*="bg-"],
+a[class*="rounded"],
+a[class*="px-"][class*="py-"],
+button,
+.btn,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  text-decoration: none !important; /* No underline for buttons */
 }
 
 /* Force footer links to be white */

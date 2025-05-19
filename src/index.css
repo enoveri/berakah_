@@ -34,6 +34,23 @@ body, html, #root {
   transition: box-shadow 0.3s ease;
 }
 
+/* Remove underlines from all buttons and button-like elements */
+button,
+.btn,
+a.btn,
+.button,
+a.button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+a[class*="bg-"],
+a[class*="rounded"],
+a[class*="px-"][class*="py-"],
+.leaf-button,
+a.inline-block {
+  text-decoration: none !important;
+}
+
 .glow-blue:hover {
   box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
 }

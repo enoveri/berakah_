@@ -17,6 +17,10 @@ import MinistryNeedsPage from "./pages/MinistryNeedsPage";
 import StatementOfFaithPage from "./pages/StatementOfFaithPage";
 import StoriesOfImpactPage from "./pages/StoriesOfImpactPage";
 import ChoirPage from "./pages/ChoirPage";
+import PastorsNetworkPage from "./pages/PastorsNetworkPage";
+import WidowsElderlyCarePage from "./pages/WidowsElderlyCarePage";
+import ChildrensChurchPage from "./pages/ChildrensChurchPage";
+import ChurchPlantingPage from "./pages/ChurchPlantingPage";
 
 
 function App() {
@@ -43,6 +47,10 @@ function App() {
             <Route path="/call2prayer" element={<StatementOfFaithPage />} />
             <Route path="/stories-of-impact" element={<StoriesOfImpactPage />} />
             <Route path="/choir" element={<ChoirPage />} />
+            <Route path="/pastors-network" element={<PastorsNetworkPage />} />
+            <Route path="/widows-elderly-care" element={<WidowsElderlyCarePage />} />
+            <Route path="/childrens-church" element={<ChildrensChurchPage />} />
+            <Route path="/church-planting" element={<ChurchPlantingPage />} />
             {/* Add more routes as you create more pages */}
             <Route path="*" element={
               <div className="flex items-center justify-center min-h-screen">
