@@ -1,1 +1,40 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic styling for the church theme */
+body, html, #root {
+  background-color: #EBF4FF !important; /* Light blue background */
+  background: #EBF4FF !important;
+  color: #000000 !important; /* Black text */
+  min-height: 100vh;
+}
+
+/* Hover effect classes */
+.hover-swell {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover-swell:hover {
+  transform: scale(1.05);
+}
+
+.content-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Blue glow effect */
+.glow-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-blue:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+}
+

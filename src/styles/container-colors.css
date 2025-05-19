@@ -1,0 +1,49 @@
+/* Container colors based on the dashboard image */
+
+/* Green container - Users */
+.container-green {
+  background-color: #2ecc71;
+  color: white;
+}
+
+/* Purple/Magenta container - Orders */
+.container-purple {
+  background-color: #d53eea;
+  color: white;
+}
+
+/* Blue container - Products */
+.container-blue {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Orange/Yellow container - Reviews */
+.container-orange {
+  background-color: #f39c12;
+  color: white;
+}
+
+/* Hover effects */
+.container-green:hover,
+.container-purple:hover,
+.container-blue:hover,
+.container-orange:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Text colors for headings inside containers */
+.container-green h1, .container-green h2, .container-green h3, .container-green h4, .container-green h5, .container-green h6,
+.container-purple h1, .container-purple h2, .container-purple h3, .container-purple h4, .container-purple h5, .container-purple h6,
+.container-blue h1, .container-blue h2, .container-blue h3, .container-blue h4, .container-blue h5, .container-blue h6,
+.container-orange h1, .container-orange h2, .container-orange h3, .container-orange h4, .container-orange h5, .container-orange h6 {
+  color: rgb(207, 154, 154) ;
+}
+
+/* Text colors for paragraphs inside containers */
+.container-green p, .container-green span, .container-green div, .container-green a,
+.container-purple p, .container-purple span, .container-purple div, .container-purple a,
+.container-blue p, .container-blue span, .container-blue div, .container-blue a,
+.container-orange p, .container-orange span, .container-orange div, .container-orange a {
+  color: rgb(168, 125, 125) ;
+}

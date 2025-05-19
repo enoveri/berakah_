@@ -51,30 +51,30 @@ const LocationsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold text-blue-600 mb-2 text-center">Our Locations</h1>
           <p className="text-xl text-gray-600 mb-12 text-center">
             Find a Berakah Church location near you
           </p>
-          
+
           {/* Introduction */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
             <div className="p-8">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Multiple Locations, One Church</h2>
               <p className="text-gray-600 mb-6">
-                Berakah Church is one church in multiple locations. No matter which campus you attend, 
+                Berakah Church is one church in multiple locations. No matter which campus you attend,
                 you'll experience the same welcoming atmosphere, powerful worship, and relevant Bible teaching.
               </p>
               <p className="text-gray-600">
-                We believe in making church accessible to everyone, which is why we continue to expand 
-                to new locations. Each of our campuses has its own unique flavor while maintaining the 
+                We believe in making church accessible to everyone, which is why we continue to expand
+                to new locations. Each of our campuses has its own unique flavor while maintaining the
                 heart and vision of Berakah Church.
               </p>
             </div>
           </div>
-          
+
           {/* Locations Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {locations.map((location) => (
@@ -85,7 +85,7 @@ const LocationsPage = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-800 mb-4">{location.name}</h3>
-                  
+
                   <div className="space-y-3">
                     <div className="flex items-start">
                       <div className="mr-3 text-blue-600">
@@ -93,21 +93,21 @@ const LocationsPage = () => {
                       </div>
                       <p className="text-gray-600">{location.address}</p>
                     </div>
-                    
+
                     <div className="flex items-start">
                       <div className="mr-3 text-blue-600">
                         <FaPhone />
                       </div>
                       <p className="text-gray-600">{location.phone}</p>
                     </div>
-                    
+
                     <div className="flex items-start">
                       <div className="mr-3 text-blue-600">
                         <FaEnvelope />
                       </div>
                       <p className="text-gray-600">{location.email}</p>
                     </div>
-                    
+
                     <div className="flex items-start">
                       <div className="mr-3 text-blue-600">
                         <FaClock />
@@ -120,11 +120,11 @@ const LocationsPage = () => {
                       </div>
                     </div>
                   </div>
-                  
-                  <a 
+
+                  <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address)}`}
                     target="_blank"
-                    rel="noopener noreferrer" 
+                    rel="noopener noreferrer"
                     className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
                   >
                     Get Directions
@@ -133,18 +133,18 @@ const LocationsPage = () => {
               </div>
             ))}
           </div>
-          
+
           {/* Call to Action */}
-          <div className="bg-blue-600 rounded-xl shadow-md overflow-hidden text-white">
+          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-semibold mb-4">Visit Us This Weekend</h2>
-              <p className="mb-6">
-                We would love to have you join us at any of our locations this weekend. 
+              <h2 className="text-2xl font-semibold mb-4 text-blue-600">Visit Us This Weekend</h2>
+              <p className="mb-6 text-gray-600">
+                We would love to have you join us at any of our locations this weekend.
                 Come experience the warmth and community of Berakah Church.
               </p>
-              <a 
-                href="/contact" 
-                className="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
+              <a
+                href="/contact"
+                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors shadow-md"
               >
                 Contact Us
               </a>

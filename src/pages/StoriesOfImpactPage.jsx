@@ -1,68 +1,136 @@
-import React from 'react';
-import { FaPlay } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaPlay, FaTimes } from 'react-icons/fa';
+import ReactPlayer from 'react-player/youtube';
 
 const StoriesOfImpactPage = () => {
-  // Sample stories data
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  // Stories data with YouTube links
   const stories = [
     {
       id: 1,
-      name: "ALLAN WANDERA",
-      videoUrl: "#",
-      thumbnailUrl: "https://images.unsplash.com/photo-1548187669-0b84947d8e76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      quote: ""
-    },
-    {
-      id: 2,
       name: "MOREEN",
-      videoUrl: "#",
-      thumbnailUrl: "https://images.unsplash.com/photo-1604406464259-85a3f6e2034c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      videoUrl: "https://www.youtube.com/watch?v=PcO-Zjslp8s",
+      thumbnailUrl: "https://img.youtube.com/vi/PcO-Zjslp8s/maxresdefault.jpg",
       quote: "I would always fall sick almost everyday"
     },
     {
-      id: 3,
-      name: "JOYCE",
-      videoUrl: "#",
-      thumbnailUrl: "https://images.unsplash.com/photo-1604406464259-85a3f6e2034c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      id: 2,
+      name: "LOYCE",
+      videoUrl: "https://www.youtube.com/watch?v=nkpv3ftETtI",
+      thumbnailUrl: "https://img.youtube.com/vi/nkpv3ftETtI/maxresdefault.jpg",
       quote: ""
     },
     {
-      id: 4,
+      id: 3,
       name: "GERALD",
-      videoUrl: "#",
-      thumbnailUrl: "https://images.unsplash.com/photo-1604406464259-85a3f6e2034c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      videoUrl: "https://www.youtube.com/watch?v=JfQXs28brnY",
+      thumbnailUrl: "https://img.youtube.com/vi/JfQXs28brnY/maxresdefault.jpg",
       quote: ""
     }
   ];
 
   // Video player component
   const VideoThumbnail = ({ story }) => {
+    const playVideo = () => {
+      setActiveVideo(story);
+    };
+
     return (
-      <div className="relative group">
+      <div className="relative group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]" onClick={playVideo}>
         <div className="aspect-video overflow-hidden rounded-lg">
-          <img 
-            src={story.thumbnailUrl} 
-            alt={`${story.name}'s Story`} 
-            className="w-full h-full object-cover"
+          <img
+            src={story.thumbnailUrl}
+            alt={`${story.name}'s Story`}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
             <div className="relative z-10">
-              <div className="w-16 h-16 rounded-full bg-blue-500 bg-opacity-80 flex items-center justify-center cursor-pointer transform transition-transform duration-300 group-hover:scale-110">
+              <div className="w-16 h-16 rounded-full bg-blue-600 bg-opacity-90 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-opacity-100">
                 <FaPlay className="text-white text-xl ml-1" />
               </div>
             </div>
           </div>
           {story.quote && (
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60 text-white">
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60 text-white transition-opacity duration-300 group-hover:bg-opacity-70">
               <p className="italic text-lg">{story.quote}</p>
             </div>
           )}
+          <div className="absolute inset-0 border-4 border-transparent group-hover:border-blue-500 rounded-lg transition-all duration-300"></div>
+        </div>
+      </div>
+    );
+  };
+
+  // Video Modal component
+  const VideoModal = ({ story, onClose }) => {
+    if (!story) return null;
+
+    // Close modal when clicking outside the video
+    const handleBackdropClick = (e) => {
+      if (e.target === e.currentTarget) {
+        onClose();
+      }
+    };
+
+    // Close modal with escape key
+    React.useEffect(() => {
+      const handleEsc = (e) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      };
+      window.addEventListener('keydown', handleEsc);
+
+      // Prevent scrolling when modal is open
+      document.body.style.overflow = 'hidden';
+
+      return () => {
+        window.removeEventListener('keydown', handleEsc);
+        document.body.style.overflow = 'auto';
+      };
+    }, [onClose]);
+
+    return (
+      <div
+        className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+        onClick={handleBackdropClick}
+      >
+        <div className="relative w-full max-w-4xl animate-fadeIn">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-white text-xl font-bold">{story.name}'S STORY</h3>
+            <button
+              onClick={onClose}
+              className="text-white hover:text-gray-300 focus:outline-none bg-red-600 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+              aria-label="Close video"
+            >
+              <FaTimes size={18} />
+            </button>
+          </div>
+          <div className="aspect-video w-full rounded-lg overflow-hidden shadow-2xl">
+            <ReactPlayer
+              url={story.videoUrl}
+              width="100%"
+              height="100%"
+              controls
+              playing
+              config={{
+                youtube: {
+                  playerVars: {
+                    showinfo: 1,
+                    rel: 0
+                  }
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
     );
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -76,59 +144,37 @@ const StoriesOfImpactPage = () => {
             </p>
           </div>
 
-          {/* First story - Full width */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-              {stories[0].name}'S STORY
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <VideoThumbnail story={stories[0]} />
-            </div>
-          </div>
-
-          {/* Second and third stories - Side by side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                {stories[1].name}'S STORY
-              </h2>
-              <VideoThumbnail story={stories[1]} />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                {stories[2].name}'S STORY
-              </h2>
-              <VideoThumbnail story={stories[2]} />
-            </div>
-          </div>
-
-          {/* Fourth story - Full width */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-              {stories[3].name}'S STORY
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <VideoThumbnail story={stories[3]} />
-            </div>
+          {/* Video Gallery - All stories in a grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {stories.map((story) => (
+              <div key={story.id} className="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <h2 className="text-xl font-bold text-gray-800 py-3 px-4 text-center border-b">
+                  {story.name}'S STORY
+                </h2>
+                <div className="p-4">
+                  <VideoThumbnail story={story} />
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Call to Action */}
-          <div className="bg-blue-600 rounded-xl shadow-md overflow-hidden text-white">
+          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-semibold mb-4">Make a Difference Today</h2>
-              <p className="mb-6">
+              <h2 className="text-2xl font-semibold mb-4 text-blue-600">Make a Difference Today</h2>
+              <p className="mb-6 text-gray-600">
                 Your support can transform a child's life. Consider sponsoring a child or making a donation to help us continue our work.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <a 
-                  href="/sponsor-child" 
-                  className="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
+              <div className="flex flex-wrap justify-center gap-6">
+                <a
+                  href="/sponsor-child"
+                  className="inline-block px-8 py-4 bg-blue-600 text-white rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
                 >
                   Sponsor a Child
                 </a>
-                <a 
-                  href="/donate" 
-                  className="inline-block px-6 py-3 border border-white text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
+                <a
+                  href="/donate"
+                  className="inline-block px-8 py-4 bg-green-600 text-white rounded-md font-semibold text-lg hover:bg-green-700 transition-colors shadow-md"
                 >
                   Donate Now
                 </a>
@@ -137,6 +183,14 @@ const StoriesOfImpactPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {activeVideo && (
+        <VideoModal
+          story={activeVideo}
+          onClose={() => setActiveVideo(null)}
+        />
+      )}
     </div>
   );
 };

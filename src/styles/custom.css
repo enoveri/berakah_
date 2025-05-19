@@ -1,0 +1,155 @@
+/* Blue theme with different shades */
+:root {
+  --blue-dark: #1E40AF;
+  --blue-medium: #3B82F6;
+  --blue-light: #93C5FD;
+  --blue-lightest: #EBF4FF;
+  --text-dark: #333333;
+}
+
+/* Apply to HTML and body directly */
+html, body {
+  background-color: var(--blue-lightest);
+  color: #000000;
+  min-height: 100vh;
+}
+
+#root {
+  background-color: var(--blue-lightest);
+  min-height: 100vh;
+}
+
+/* Main container background */
+.min-h-screen {
+  background-color: var(--blue-lightest);
+}
+
+/* Header styling */
+header {
+  background-color: var(--blue-lightest);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Footer styling */
+footer {
+  background-color: #000000 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+/* Ensure all elements inside footer have black background and visible text */
+footer *,
+footer div,
+footer p,
+footer h3,
+footer ul,
+footer li,
+footer a {
+  background-color: #000000 !important;
+}
+
+footer h3,
+footer p,
+footer a,
+footer address,
+footer li {
+  color: white !important;
+}
+
+footer a:hover {
+  color: #93C5FD !important; /* Light blue on hover */
+}
+
+/* Ensure social media icons are white */
+footer svg {
+  color: white !important;
+  fill: white !important;
+}
+
+footer svg:hover {
+  color: #93C5FD !important;
+  fill: #93C5FD !important;
+}
+
+/* Card styling */
+.bg-white {
+  background-color: var(--blue-light);
+  color: var(--text-dark);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Text colors */
+.text-gray-600, .text-gray-700, .text-gray-800 {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Hero sections */
+.bg-blue-600 {
+  background-color: var(--blue-accent);
+}
+
+.bg-blue-500 {
+  background-color: var(--blue-light);
+}
+
+.bg-blue-700 {
+  background-color: #1E3A8A;
+}
+
+/* Featured events section */
+.bg-gradient-to-r {
+  background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+}
+
+/* Button styling */
+.bg-blue-600 {
+  background-color: var(--blue-accent);
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: #1E3A8A;
+}
+
+.text-blue-600 {
+  color: #0078D7;
+}
+
+.hover\:text-blue-800:hover {
+  color: #005A9E;
+}
+
+/* Form inputs */
+input, textarea, select {
+  background-color: rgba(147, 197, 253, 0.3); /* Light blue background */
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #333;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Override specific components */
+.bg-gray-50, .bg-gray-100 {
+  background-color: var(--blue-lightest);
+}
+
+/* Override the JOIN US FOR PRAYER section background */
+.join-us-for-prayer-section,
+section.py-12,
+section.py-12 > div,
+section.py-12 > div > div,
+section.py-12 > div > div > div {
+  background-color: var(--blue-lightest) !important;
+  background: var(--blue-lightest) !important;
+}
+
+/* Card hover effects */
+.hover\:shadow-xl:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Navbar dropdown background */
+.absolute.bg-white.shadow-lg {
+  background-color: var(--blue-lightest);
+}

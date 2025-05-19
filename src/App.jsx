@@ -16,13 +16,15 @@ import DonatePage from "./pages/DonatePage";
 import MinistryNeedsPage from "./pages/MinistryNeedsPage";
 import StatementOfFaithPage from "./pages/StatementOfFaithPage";
 import StoriesOfImpactPage from "./pages/StoriesOfImpactPage";
+import ChoirPage from "./pages/ChoirPage";
+
 
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-light">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow" style={{ backgroundColor: '#EBF4FF' }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -40,13 +42,14 @@ function App() {
             <Route path="/statement-of-faith" element={<StatementOfFaithPage />} />
             <Route path="/call2prayer" element={<StatementOfFaithPage />} />
             <Route path="/stories-of-impact" element={<StoriesOfImpactPage />} />
+            <Route path="/choir" element={<ChoirPage />} />
             {/* Add more routes as you create more pages */}
             <Route path="*" element={
-              <div className="flex items-center justify-center min-h-screen bg-gray-100">
+              <div className="flex items-center justify-center min-h-screen">
                 <div className="text-center">
                   <h1 className="text-6xl font-bold text-blue-600 mb-4">404</h1>
                   <p className="text-2xl text-gray-700 mb-6">Page Not Found</p>
-                  <a href="/" className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+                  <a href="/" className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                     Go Home
                   </a>
                 </div>

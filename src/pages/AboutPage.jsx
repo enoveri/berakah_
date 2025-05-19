@@ -34,12 +34,7 @@ const AboutPage = () => {
       description: "Pastor Paul Gidudu envisions supporting pastors and their families in their ministry to the masses. This dream gave rise to Pastor's Network Uganda, a platform that provides training, encouragement, empowerment, exposure, and sponsorship to fulfill the crucial need of supporting pastors and their families in their noble endeavors.",
       link: "/pastors-network"
     },
-    {
-      id: 6,
-      title: "CHURCH PLANTING",
-      description: "We at IGFM are passionate and greatly committed to the Great commission of making disciples (Matt 28:19) partnering with over 1,000 Pastors to plant new Churches that plant other Churches in Uganda and beyond.\n\nFor Spiritual growth and Discipleship to happen in the communities we serve, there is a need for Places of Worship, hence our commitment to helping with church construction.",
-      link: "/church-planting"
-    },
+
     {
       id: 7,
       title: "WIDOWS AND ELDERLY CARE",
@@ -55,10 +50,12 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-16 leaf-bg">
+      <div className="leaf-decoration leaf-top-left"></div>
+      <div className="leaf-decoration leaf-top-right"></div>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">About Us</h1>
+          <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center leaf-accent">About Us</h1>
 
           {/* Vision and Mission Section */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
@@ -67,26 +64,26 @@ const AboutPage = () => {
               <span className="text-blue-600 font-medium">Church Image Placeholder</span>
             </div>
             <div className="p-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Vision</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Vision</h2>
               <p className="text-gray-600 mb-6">
                 We are an English-speaking, cell-based community church, celebrating Christ,
                 growing and multiplying as each one reaches one; touching those around us with the
                 love of Jesus, bringing healing to the cities and the nations.
               </p>
 
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Mission</h2>
               <p className="text-gray-600 mb-6">
                 To be a loving family sharing Christ with the world, by:
               </p>
-              <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
+              <ul className="leaf-list pl-6 text-gray-600 mb-6 space-y-2">
                 <li>Expressing God's love through worship and service</li>
                 <li>Experiencing transformation through discipleship</li>
-                <li>Expanding God's Kingdom through evangelism and church planting</li>
+                <li>Expanding God's Kingdom through evangelism</li>
                 <li>Extending compassion through community development and social justice initiatives</li>
               </ul>
 
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Values</h2>
-              <ul className="list-disc pl-6 text-gray-600 space-y-2">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Values</h2>
+              <ul className="leaf-list pl-6 text-gray-600 space-y-2">
                 <li><strong>Bible-based teaching:</strong> We are committed to the Word of God as our foundation and guide.</li>
                 <li><strong>Cell-based community:</strong> We believe in close-knit family units where discipleship happens.</li>
                 <li><strong>Passionate worship:</strong> We express our love for God through vibrant, authentic worship.</li>
@@ -98,21 +95,21 @@ const AboutPage = () => {
           </div>
 
           {/* Ministry Sections */}
-          <h2 className="text-3xl font-bold text-blue-600 mb-8 text-center">Our Ministries</h2>
+          <h2 className="text-3xl font-bold text-blue-600 mb-8 text-center leaf-accent">Our Ministries</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {ministrySections.map((section) => (
               <div
                 key={section.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl leaf-card"
               >
                 <div className="p-6">
-                  <h2 className="text-2xl font-bold text-blue-600 mb-4">{section.title}</h2>
+                  <h2 className="text-2xl font-bold text-blue-600 mb-4 leaf-accent">{section.title}</h2>
                   <div className="text-gray-700 mb-4 whitespace-pre-line">
                     {section.description}
                   </div>
                   <Link
                     to={section.link}
-                    className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
+                    className="leaf-button inline-block px-6 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
                   >
                     MORE
                   </Link>
@@ -122,6 +119,8 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+      <div className="leaf-decoration leaf-bottom-left"></div>
+      <div className="leaf-decoration leaf-bottom-right"></div>
     </div>
   );
 };

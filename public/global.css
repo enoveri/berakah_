@@ -1,0 +1,30 @@
+/* Global CSS that will be loaded before any React code */
+body, html {
+  background-color: #FFFFFF ;
+  background-image: none ;
+  color: #333333 ;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Hover effect for content boxes */
+.content-box {
+  transition: all 0.3s ease;
+}
+
+.content-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for text */
+.hover-swell {
+  transition: all 0.3s ease;
+}
+
+.hover-swell:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}

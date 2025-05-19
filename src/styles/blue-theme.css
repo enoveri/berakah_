@@ -1,0 +1,69 @@
+/* Blue theme with different shades */
+body {
+  background-color: #EBF4FF ;
+  background-image: none ;
+  color: #333333;
+}
+
+html {
+  background-color: #EBF4FF ;
+  background-image: none ;
+}
+
+#root {
+  background-color: #EBF4FF;
+  background-image: none;
+  min-height: 100vh;
+}
+
+.bg-white {
+  background-color: #DBEAFE; /* Lighter blue */
+  color: #333333;
+}
+
+.text-gray-700 {
+  color: #1E3A8A; /* Dark blue instead of gray */
+}
+
+.text-gray-600 {
+  color: #1E40AF; /* Medium blue instead of gray */
+}
+
+header {
+  background-color: #EBF4FF;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+footer {
+  background-color: #000000 !important; /* Black footer */
+  border-top: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.bg-gray-100, .bg-gray-50 {
+  background-color: #DBEAFE; /* Lighter blue */
+}
+
+.min-h-screen {
+  background-color: #EBF4FF;
+  background-image: none;
+}
+
+.bg-blue-600 {
+  background-color: #2563EB;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: #1D4ED8;
+}
+
+.text-blue-600 {
+  color: #2563EB;
+}
+
+.hover\:text-blue-600:hover {
+  color: #1D4ED8;
+}
+
+.bg-gradient-to-r {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+}

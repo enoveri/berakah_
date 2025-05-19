@@ -52,14 +52,14 @@ const GenerosityPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold text-blue-600 mb-2 text-center">Generosity</h1>
           <p className="text-xl text-gray-600 mb-12 text-center">
             Giving with a cheerful heart
           </p>
-          
+
           {/* Introduction */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
             <div className="p-8">
@@ -68,35 +68,35 @@ const GenerosityPage = () => {
               </div>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Why We Give</h2>
               <p className="text-gray-600 mb-6">
-                At Berakah Church, we believe that giving is an act of worship. When we give, we acknowledge 
+                At Berakah Church, we believe that giving is an act of worship. When we give, we acknowledge
                 that everything we have comes from God, and we express our gratitude for His provision in our lives.
               </p>
               <p className="text-gray-600 mb-6">
-                Your generosity enables us to share the love of Jesus through various ministries, community 
-                outreach programs, and missions work both locally and globally. Together, we can make a 
+                Your generosity enables us to share the love of Jesus through various ministries, community
+                outreach programs, and missions work both locally and globally. Together, we can make a
                 difference in the lives of many people.
               </p>
               <p className="text-gray-600">
-                We are committed to being good stewards of every gift, ensuring that resources are used 
+                We are committed to being good stewards of every gift, ensuring that resources are used
                 effectively to advance God's Kingdom and bring glory to His name.
               </p>
             </div>
           </div>
-          
+
           {/* Scripture */}
-          <div className="bg-blue-600 text-white rounded-xl shadow-md overflow-hidden mb-12">
+          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden mb-12">
             <div className="p-8 text-center">
-              <p className="text-xl italic mb-4">
-                "Each of you should give what you have decided in your heart to give, not reluctantly 
+              <p className="text-xl italic mb-4 text-gray-700">
+                "Each of you should give what you have decided in your heart to give, not reluctantly
                 or under compulsion, for God loves a cheerful giver."
               </p>
-              <p className="font-semibold">2 Corinthians 9:7</p>
+              <p className="font-semibold text-blue-600">2 Corinthians 9:7</p>
             </div>
           </div>
-          
+
           {/* Giving Options */}
           <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Ways to Give</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {givingOptions.map((option) => (
               <div key={option.id} className="bg-white rounded-xl shadow-md overflow-hidden">
@@ -120,18 +120,18 @@ const GenerosityPage = () => {
               </div>
             ))}
           </div>
-          
+
           {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-md overflow-hidden text-white">
+          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-semibold mb-4">Have Questions About Giving?</h2>
-              <p className="mb-6">
-                If you have any questions about giving or would like more information about how your 
+              <h2 className="text-2xl font-semibold mb-4 text-blue-600">Have Questions About Giving?</h2>
+              <p className="mb-6 text-gray-600">
+                If you have any questions about giving or would like more information about how your
                 donations are being used, please don't hesitate to contact us.
               </p>
-              <a 
-                href="/contact" 
-                className="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
+              <a
+                href="/contact"
+                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors shadow-md"
               >
                 Contact Us
               </a>

@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const ChildrenGrid = () => {
+  const [visibleChildren, setVisibleChildren] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const childrenPerPage = 20;
+
   // List of children's names
   const children = [
     "Nambozo Zuena",
@@ -479,27 +485,129 @@ const ChildrenGrid = () => {
     "Maluti Charles"
   ];
 
+  // Load initial set of children when component mounts
+  useEffect(() => {
+    // Load first set of children
+    const endIndex = currentPage * childrenPerPage;
+    setVisibleChildren(children.slice(0, endIndex));
+  }, [currentPage, children, childrenPerPage]);
+
+  // Add scroll event listener to show/hide back to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Function to scroll to a specific element
+  const scrollToElement = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      // Scroll to the element with a small offset
+      window.scrollTo({
+        top: element.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Function to scroll back to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Handle load more button click
+  const handleLoadMore = () => {
+    setIsLoading(true);
+    // Simulate a small delay to show loading state
+    setTimeout(() => {
+      setCurrentPage(prevPage => prevPage + 1);
+      setIsLoading(false);
+      // Scroll to the last visible child before loading more
+      if (visibleChildren.length > 0) {
+        scrollToElement(`child-${visibleChildren.length - 1}`);
+      }
+    }, 500);
+  };
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {children.map((child, index) => (
-        <div 
-          key={index} 
-          className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105"
-        >
-          <div className="p-4 text-center">
-            <div className="h-16 flex items-center justify-center">
-              <h3 className="text-lg font-semibold text-gray-800">{child}</h3>
+    <>
+      {/* Display counter showing how many children are displayed out of total */}
+      <div className="mb-4 text-right text-gray-600">
+        Showing {visibleChildren.length} of {children.length} children
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {visibleChildren.map((child, index) => (
+          <div
+            key={index}
+            id={`child-${index}`}
+            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 animate-fade-in border border-gray-200"
+            style={{ animationDelay: `${(index % 20) * 50}ms` }}
+          >
+            <div className="p-4 text-center">
+              <div className="h-16 flex items-center justify-center">
+                <h3 className="text-lg font-semibold text-gray-800">{child}</h3>
+              </div>
+              <Link
+                to={`/sponsor-child/${encodeURIComponent(child)}`}
+                className="mt-4 inline-block w-full px-4 py-3 bg-blue-600 text-white rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
+              >
+                Sponsor
+              </Link>
             </div>
-            <Link 
-              to={`/sponsor-child/${encodeURIComponent(child)}`} 
-              className="mt-4 inline-block w-full px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
-            >
-              Sponsor
-            </Link>
           </div>
+        ))}
+      </div>
+
+      {/* Load More Button - only show if there are more children to load */}
+      {visibleChildren.length < children.length && (
+        <div className="mt-8 text-center">
+          <button
+            onClick={handleLoadMore}
+            disabled={isLoading}
+            className={`px-8 py-4 ${isLoading ? 'bg-blue-700' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-md font-semibold text-lg transition-colors shadow-md`}
+          >
+            {isLoading ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading...
+              </span>
+            ) : 'Load More'}
+          </button>
         </div>
-      ))}
-    </div>
+      )}
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-50 border border-blue-400"
+          aria-label="Back to top"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      )}
+    </>
   );
 };
 

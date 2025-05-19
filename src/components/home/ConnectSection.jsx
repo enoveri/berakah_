@@ -81,11 +81,11 @@ const ConnectSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 bg-white border-t border-b border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-600 mb-4">CONNECT, GET INVOLVED</h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-2">CONNECT, GET INVOLVED</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Church is what everybody does everyday!
           </p>
         </div>
@@ -93,12 +93,12 @@ const ConnectSection = () => {
         <div className="mb-12">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {connectLinks.map((item) => (
-              <Link 
+              <Link
                 key={item.id}
                 to={item.link}
-                className={`${item.bgColor} text-white py-6 px-3 rounded-lg text-center font-medium hover:opacity-90 transition-opacity`}
+                className={`content-box ${item.bgColor} text-white py-5 px-3 rounded-lg text-center font-medium`}
               >
-                {item.title}
+                <span className="hover-swell inline-block">{item.title}</span>
               </Link>
             ))}
           </div>
@@ -107,32 +107,32 @@ const ConnectSection = () => {
         <div className="mb-12">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {getInvolvedLinks.map((item) => (
-              <Link 
+              <Link
                 key={item.id}
                 to={item.link}
-                className={`${item.bgColor} text-white py-6 px-3 rounded-lg text-center font-medium hover:opacity-90 transition-opacity`}
+                className={`content-box ${item.bgColor} text-white py-5 px-3 rounded-lg text-center font-medium`}
               >
-                {item.title}
+                <span className="hover-swell inline-block">{item.title}</span>
               </Link>
             ))}
           </div>
         </div>
 
         {/* App Download Links */}
-        <div className="text-center mt-16">
-          <h3 className="text-2xl font-semibold mb-4">Download Our App</h3>
+        <div className="text-center mt-12">
+          <h3 className="text-2xl font-semibold mb-4 text-blue-600">Download Our App</h3>
           <div className="flex justify-center gap-4">
-            <a 
-              href="#" 
-              className="bg-black text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-gray-800 transition-colors"
+            <a
+              href="#"
+              className="content-box bg-blue-600 text-white px-6 py-3 rounded-lg flex items-center space-x-2 shadow-md"
             >
-              <span>Download on the App Store</span>
+              <span className="hover-swell">Download on the App Store</span>
             </a>
-            <a 
-              href="#" 
-              className="bg-black text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-gray-800 transition-colors"
+            <a
+              href="#"
+              className="content-box bg-blue-600 text-white px-6 py-3 rounded-lg flex items-center space-x-2 shadow-md"
             >
-              <span>Get it on Google Play</span>
+              <span className="hover-swell">Get it on Google Play</span>
             </a>
           </div>
         </div>

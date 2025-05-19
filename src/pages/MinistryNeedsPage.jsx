@@ -324,7 +324,7 @@ const MinistryNeedsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold text-blue-600 mb-2 text-center">Ministry Needs</h1>
@@ -416,13 +416,13 @@ const MinistryNeedsPage = () => {
             {getActiveNeeds().map((need) => (
               <div
                 key={need.id}
-                className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 group"
+                className={`${need.id % 4 === 1 ? 'container-green' : need.id % 4 === 2 ? 'container-purple' : need.id % 4 === 3 ? 'container-blue' : 'container-orange'} rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 group`}
               >
-                <div className="text-blue-600 mb-4 flex justify-center transform transition-transform duration-300 group-hover:scale-110">
+                <div className="text-white mb-4 flex justify-center transform transition-transform duration-300 group-hover:scale-110">
                   {need.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-center transform transition-all duration-300 group-hover:scale-110 group-hover:text-blue-600">{need.title}</h3>
-                <p className="text-gray-600 mb-4 text-center transition-all duration-300 group-hover:text-gray-800">
+                <h3 className="text-xl font-semibold mb-2 text-center transform transition-all duration-300 group-hover:scale-110">{need.title}</h3>
+                <p className="mb-4 text-center transition-all duration-300">
                   {need.description}
                 </p>
                 <div className="bg-gray-50 p-3 rounded-md mb-4 transition-all duration-300 group-hover:bg-blue-50">
@@ -614,16 +614,16 @@ const MinistryNeedsPage = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-md overflow-hidden text-white">
+          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-semibold mb-4">Other Ways to Support</h2>
-              <p className="mb-6">
+              <h2 className="text-2xl font-semibold mb-4 text-blue-600">Other Ways to Support</h2>
+              <p className="mb-6 text-gray-600">
                 In addition to financial donations, we also welcome volunteers, prayer partners, and in-kind donations.
                 Contact us to learn more about how you can get involved.
               </p>
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
+                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors shadow-md"
               >
                 Contact Us
               </Link>
