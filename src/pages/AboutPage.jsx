@@ -5,24 +5,6 @@ const AboutPage = () => {
   // Ministry sections data
   const ministrySections = [
     {
-      id: 1,
-      title: "International Great Faith Ministries (IGFM)",
-      description: "The International Great Faith Ministries (IGFM) is committed to reaching out to every unreached people group, addressing both their spiritual and physical needs. Our efforts include Church Planting, Evangelism, Leadership Development, and the provision of care for vulnerable individuals and orphaned children through Berakhah Childcare.",
-      link: "/about-igfm"
-    },
-    {
-      id: 2,
-      title: "BERAKHAH CHILDCARE",
-      description: "Berakhah Childcare exists to care for orphaned and vulnerable children in Uganda's rural villages providing for their physical, emotional, Spiritual and educational needs empowering them to become Uganda's future leaders.\n\nBerakhah childcare home in Busamaga- Buwalasi 14km or 9miles North of Mbale town in Uganda is where orphaned and vulnerable children find the much needed love and care and the home of Berakhah Children's Choir.",
-      link: "/berakhah-childcare"
-    },
-    {
-      id: 3,
-      title: "BERAKHAH CHOIR",
-      description: "Berakhah Children's Choir travels to different places performing unique cultural music and dances, sharing their life changing stories and testimonies while developing their talents but at the same time creating awareness of the plight of orphans and vulnerable children in the rural villages of Uganda.",
-      link: "/berakhah-choir"
-    },
-    {
       id: 4,
       title: "CALL2PRAYER MBALE CHURCH",
       description: "A church after God's heart committed to evangelism, loving God, loving people and changing lives.\nWe are located in Mbale-City 900m From Mbale S.S on Kakungulu Drive Half London Area.",
@@ -34,12 +16,29 @@ const AboutPage = () => {
       description: "Pastor Paul Gidudu envisions supporting pastors and their families in their ministry to the masses. This dream gave rise to Pastor's Network Uganda, a platform that provides training, encouragement, empowerment, exposure, and sponsorship to fulfill the crucial need of supporting pastors and their families in their noble endeavors.",
       link: "/pastors-network"
     },
-
+    {
+      id: 1,
+      title: "International Great Faith Ministries (IGFM)",
+      description: "The International Great Faith Ministries (IGFM) is committed to reaching out to every unreached people group, addressing both their spiritual and physical needs. Our efforts include Church Planting, Evangelism, Leadership Development, and the provision of care for vulnerable individuals and orphaned children through Berakhah Childcare.",
+      link: "/about-igfm"
+    },
+    {
+      id: 3,
+      title: "BERAKHAH CHOIR",
+      description: "Berakhah Children's Choir travels to different places performing unique cultural music and dances, sharing their life changing stories and testimonies while developing their talents but at the same time creating awareness of the plight of orphans and vulnerable children in the rural villages of Uganda.",
+      link: "/berakhah-choir"
+    },
     {
       id: 7,
       title: "WIDOWS AND ELDERLY CARE",
       description: "Widows and Elderly care is a cause that is incredibly close to our hearts here at IGFM and Berakhah. In many communities where we work, access to social services is nonexistent. This leaves widows and vulnerable elderly individuals without the most basic necessities, such as medical care and even food. It's a heartbreaking reality that some are left to starve to death simply because there are no support systems in place.",
       link: "/widows-elderly-care"
+    },
+    {
+      id: 2,
+      title: "BERAKHAH CHILDCARE",
+      description: "Berakhah Childcare exists to care for orphaned and vulnerable children in Uganda's rural villages providing for their physical, emotional, Spiritual and educational needs empowering them to become Uganda's future leaders.\n\nBerakhah childcare home in Busamaga- Buwalasi 14km or 9miles North of Mbale town in Uganda is where orphaned and vulnerable children find the much needed love and care and the home of Berakhah Children's Choir.",
+      link: "/berakhah-childcare"
     },
     {
       id: 8,
@@ -59,9 +58,12 @@ const AboutPage = () => {
 
           {/* Vision and Mission Section */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
-            <div className="h-64 bg-blue-200 flex items-center justify-center">
-              {/* This would be replaced with an actual image */}
-              <span className="text-blue-600 font-medium">Church Image Placeholder</span>
+            <div className="h-64 bg-blue-200 overflow-hidden">
+              <img
+                src="/photos/pastors-2.jpg"
+                alt="Pastors Network"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="p-8">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Vision</h2>
@@ -100,16 +102,16 @@ const AboutPage = () => {
             {ministrySections.map((section) => (
               <div
                 key={section.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl leaf-card"
+                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl leaf-card ministry-container"
               >
-                <div className="p-6">
+                <div className="p-6 flex-grow flex flex-col">
                   <h2 className="text-2xl font-bold text-blue-600 mb-4 leaf-accent">{section.title}</h2>
-                  <div className="text-gray-700 mb-4 whitespace-pre-line">
+                  <div className="text-gray-700 whitespace-pre-line ministry-content">
                     {section.description}
                   </div>
                   <Link
                     to={section.link}
-                    className="leaf-button inline-block px-6 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
+                    className="ministry-button"
                   >
                     MORE
                   </Link>

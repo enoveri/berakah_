@@ -90,7 +90,7 @@ const PrayerSection = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
       {
@@ -118,7 +118,7 @@ const PrayerSection = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     pauseOnHover: true,
     arrows: true,
     fade: true
@@ -144,9 +144,9 @@ const PrayerSection = () => {
   };
 
   return (
-    <section className="py-12 bg-blue-50 leaf-section">
+    <section className="py-12 leaf-section" style={{ backgroundColor: '#A6CFFF' }}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 py-8 bg-blue-200 shadow-lg rounded-lg max-w-5xl mx-auto border border-blue-300 glow-blue">
+        <div className="text-center mb-12 py-8 bg-[#EBF4FF] shadow-lg rounded-lg max-w-5xl mx-auto border border-blue-300 glow-blue">
           <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">JOIN US FOR PRAYER</h2>
           <p className="text-xl text-blue-800 max-w-4xl mx-auto px-4">
             About Call To Prayer

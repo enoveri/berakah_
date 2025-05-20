@@ -69,9 +69,9 @@ const PartnersPage = () => {
             <h2 className="text-3xl font-bold text-blue-600 mb-12 text-center">Ways You Can Partner With Us</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              <div className="container-green rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105">
-                <div className="text-white mb-4">
-                  <FaChild size={48} />
+              <div className="partner-box rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105">
+                <div className="mb-4">
+                  <FaChild size={48} color="black" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Child Sponsorship</h3>
                 <p className="mb-4">
@@ -79,15 +79,15 @@ const PartnersPage = () => {
                 </p>
                 <a
                   href="/sponsor-child"
-                  className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
+                  className="inline-block px-6 py-3 bg-blue-700 text-white rounded-md font-semibold text-lg hover:bg-blue-800 transition-colors shadow-md"
                 >
                   View Children
                 </a>
               </div>
 
-              <div className="container-purple rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105">
-                <div className="text-white mb-4">
-                  <FaPrayingHands size={48} />
+              <div className="partner-box rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105">
+                <div className="mb-4">
+                  <FaPrayingHands size={48} color="black" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Ministry Support</h3>
                 <p>
@@ -95,9 +95,9 @@ const PartnersPage = () => {
                 </p>
               </div>
 
-              <div className="container-blue rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105">
-                <div className="text-white mb-4">
-                  <FaHandHoldingHeart size={48} />
+              <div className="partner-box rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105">
+                <div className="mb-4">
+                  <FaHandHoldingHeart size={48} color="black" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Humanitarian Aid</h3>
                 <p>
@@ -347,9 +347,10 @@ const PartnersPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-blue-600 text-white py-4 rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md disabled:bg-blue-400"
+                    className="w-full bg-blue-700 text-white py-4 rounded-md font-bold text-xl hover:bg-blue-800 transition-colors shadow-lg border-2 border-black disabled:bg-blue-400"
+                    style={{ color: 'white !important' }}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                    {isSubmitting ? 'Submitting...' : 'SUBMIT'}
                   </button>
                 </form>
               </div>

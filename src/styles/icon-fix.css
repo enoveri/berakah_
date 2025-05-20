@@ -1,0 +1,85 @@
+/* Fix for icons to ensure they're visible */
+
+/* Make all SVG icons visible with proper color */
+svg {
+  fill: currentColor;
+  stroke: currentColor;
+  display: inline-block;
+}
+
+/* Force all icons to be black in the ministry needs page */
+[class^="fa-"],
+[class*=" fa-"] {
+  color: black !important;
+  fill: black !important;
+  stroke: black !important;
+  font-size: 2.5rem !important;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Specific fix for container icons */
+.container-blue svg,
+.container-green svg,
+.container-purple svg,
+.container-orange svg {
+  color: black !important;
+  fill: black !important;
+  stroke: black !important;
+  font-size: 2.5rem !important;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix for specific icon types */
+.fa-bus, .fa-music, .fa-laptop, .fa-desktop,
+.fa-camera, .fa-video, .fa-cog, .fa-school,
+.fa-hammer, .fa-map-marked-alt, .fa-book,
+.fa-tshirt, .fa-car-side, .fa-first-aid,
+.fa-child, .fa-bicycle, .fa-gamepad,
+.fa-puzzle-piece, .fa-film, .fa-female,
+.fa-building, .fa-cut, .fa-tools,
+.fa-praying-hands, .fa-hand-holding-heart {
+  color: black !important;
+  fill: black !important;
+  stroke: black !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure icon containers are properly sized */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+}
+
+/* Direct style for ministry needs icons */
+.ministry-needs-page svg {
+  color: black !important;
+  fill: black !important;
+  stroke: black !important;
+  font-size: 2.5rem !important;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure all button text is white */
+.ministry-needs-page button,
+.ministry-needs-page a.block,
+.ministry-needs-page a.inline-block {
+  color: white !important;
+}
+
+.ministry-needs-page button span,
+.ministry-needs-page a.block span,
+.ministry-needs-page a.inline-block span {
+  color: white !important;
+  font-weight: bold !important;
+}

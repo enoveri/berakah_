@@ -1,17 +1,17 @@
 /* Blue theme with different shades */
 body {
-  background-color: #EBF4FF ;
+  background-color: #1E3A8A ;
   background-image: none ;
   color: #333333;
 }
 
 html {
-  background-color: #EBF4FF ;
+  background-color: #1E3A8A ;
   background-image: none ;
 }
 
 #root {
-  background-color: #EBF4FF;
+  background-color: #1E3A8A;
   background-image: none;
   min-height: 100vh;
 }
@@ -44,7 +44,7 @@ footer {
 }
 
 .min-h-screen {
-  background-color: #EBF4FF;
+  background-color: #1E3A8A;
   background-image: none;
 }
 
@@ -66,4 +66,54 @@ footer {
 
 .bg-gradient-to-r {
   background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+}
+
+/* Hero section styling */
+.relative.h-\[70vh\] .bg-blue-100 {
+  width: 90%;
+  max-width: 1200px;
+}
+
+.relative.h-\[70vh\] h1 {
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Pink glow effect on hover for containers */
+.content-box {
+  transition: box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+  box-shadow: 0 0 15px 5px #FF69B4;
+}
+
+.glow-blue {
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-blue:hover {
+  box-shadow: 0 0 15px 5px #FF69B4;
+}
+
+/* Button styling enhancements */
+.leaf-button {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 2px solid #93C5FD;
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Prayer section styling */
+.prayer-section {
+  background-color: #DBEAFE; /* bg-blue-100 */
+  background-image: linear-gradient(to right, rgba(219, 234, 254, 0.8), rgba(191, 219, 254, 0.3));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pink shadow for buttons */
+.hover\:shadow-pink:hover {
+  box-shadow: 0 0 15px 5px #FF69B4;
 }

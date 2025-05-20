@@ -1,26 +1,17 @@
 /* Container colors based on the dashboard image */
 
-/* Green container - Users */
-.container-green {
-  background-color: #2ecc71;
-  color: white;
-}
-
-/* Purple/Magenta container - Orders */
-.container-purple {
-  background-color: #d53eea;
-  color: white;
-}
-
-/* Blue container - Products */
-.container-blue {
-  background-color: #3498db;
-  color: white;
-}
-
-/* Orange/Yellow container - Reviews */
+/* All containers now use the light blue color */
+.container-green,
+.container-purple,
+.container-blue,
 .container-orange {
-  background-color: #f39c12;
+  background-color: #A6CFFF;
+  color: black;
+}
+
+/* Partner box - the specific blue from the image */
+.partner-box {
+  background-color: #3B9AE1;
   color: white;
 }
 
@@ -37,13 +28,37 @@
 .container-purple h1, .container-purple h2, .container-purple h3, .container-purple h4, .container-purple h5, .container-purple h6,
 .container-blue h1, .container-blue h2, .container-blue h3, .container-blue h4, .container-blue h5, .container-blue h6,
 .container-orange h1, .container-orange h2, .container-orange h3, .container-orange h4, .container-orange h5, .container-orange h6 {
-  color: rgb(207, 154, 154) ;
+  color: black !important;
+}
+
+.partner-box h1, .partner-box h2, .partner-box h3, .partner-box h4, .partner-box h5, .partner-box h6 {
+  color: white !important;
 }
 
 /* Text colors for paragraphs inside containers */
-.container-green p, .container-green span, .container-green div, .container-green a,
-.container-purple p, .container-purple span, .container-purple div, .container-purple a,
-.container-blue p, .container-blue span, .container-blue div, .container-blue a,
-.container-orange p, .container-orange span, .container-orange div, .container-orange a {
-  color: rgb(168, 125, 125) ;
+.container-green p, .container-green span, .container-green div,
+.container-purple p, .container-purple span, .container-purple div,
+.container-blue p, .container-blue span, .container-blue div,
+.container-orange p, .container-orange span, .container-orange div {
+  color: black !important;
+}
+
+.partner-box p, .partner-box span, .partner-box div, .partner-box a {
+  color: white !important;
+}
+
+/* Make sure links inside containers are visible */
+.container-green a, .container-purple a, .container-blue a, .container-orange a {
+  color: black !important;
+}
+
+/* Make icons black for better visibility */
+.container-green svg,
+.container-purple svg,
+.container-blue svg,
+.container-orange svg {
+  color: black !important;
+  fill: black !important;
+  stroke: black !important;
+  font-size: 2.5rem !important;
 }

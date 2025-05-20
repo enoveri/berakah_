@@ -107,8 +107,8 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden py-4 px-6 shadow-lg absolute w-full z-10 bg-white">
-          <div className="flex flex-col space-y-4">
+        <nav className="md:hidden py-4 px-6 shadow-lg fixed top-[72px] left-0 w-full z-50 bg-white">
+          <div className="flex flex-col space-y-4 max-h-[80vh] overflow-y-auto">
             <Link
               to="/"
               className="text-black hover:text-blue-600 font-medium py-2"

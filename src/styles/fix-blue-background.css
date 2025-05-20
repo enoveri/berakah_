@@ -1,17 +1,17 @@
-/* Set light blue background for sections */
+/* Set dark blue background for sections */
 .py-12 {
-  background-color: #EBF4FF !important; /* Light blue background */
-  background: #EBF4FF !important;
+  background-color: #1E3A8A !important; /* Dark blue background */
+  background: #1E3A8A !important;
 }
 
 .py-12 > div {
-  background-color: #EBF4FF !important;
-  background: #EBF4FF !important;
+  background-color: #1E3A8A !important;
+  background: #1E3A8A !important;
 }
 
 .py-12 > div > div {
-  background-color: #EBF4FF !important;
-  background: #EBF4FF !important;
+  background-color: #1E3A8A !important;
+  background: #1E3A8A !important;
 }
 
 /* Keep blue backgrounds */
@@ -28,6 +28,6 @@
 
 /* Target the specific section */
 section.py-12 {
-  background-color: #EBF4FF !important;
-  background: #EBF4FF !important;
+  background-color: #1E3A8A !important;
+  background: #1E3A8A !important;
 }

@@ -7,16 +7,16 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   // Mobile menu state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   // Dark mode state (if you want to implement dark mode later)
   const [isDarkMode, setIsDarkMode] = useState(false);
-  
+
   // Prayer request form state
   const [prayerRequests, setPrayerRequests] = useState([]);
-  
+
   // User authentication state (simplified for now)
   const [user, setUser] = useState(null);
-  
+
   // Latest events/announcements
   const [events, setEvents] = useState([
     {
@@ -38,27 +38,36 @@ export const AppProvider = ({ children }) => {
       description: 'Annual youth conference with special guest speakers'
     }
   ]);
-  
+
   // Toggle mobile menu
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    const newMenuState = !isMenuOpen;
+    setIsMenuOpen(newMenuState);
+
+    // Add or remove body class for menu overlay
+    if (newMenuState) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
   };
-  
+
   // Toggle dark mode
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
-  
+
   // Add a prayer request
   const addPrayerRequest = (request) => {
     setPrayerRequests([...prayerRequests, { id: Date.now(), ...request }]);
   };
-  
+
   // Close mobile menu when changing routes
   useEffect(() => {
     setIsMenuOpen(false);
+    document.body.classList.remove('menu-open');
   }, [window.location.pathname]);
-  
+
   // Apply dark mode to body if enabled
   useEffect(() => {
     if (isDarkMode) {
@@ -67,7 +76,7 @@ export const AppProvider = ({ children }) => {
       document.body.classList.remove('dark-mode');
     }
   }, [isDarkMode]);
-  
+
   // The context value that will be provided
   const contextValue = {
     isMenuOpen,
@@ -80,7 +89,7 @@ export const AppProvider = ({ children }) => {
     setUser,
     events
   };
-  
+
   // Provide the context to children components
   return (
     <AppContext.Provider value={contextValue}>

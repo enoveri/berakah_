@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, cloneElement } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaHandHoldingHeart, FaHospital, FaGraduationCap, FaChurch, FaUsers,
@@ -49,7 +49,7 @@ const MinistryNeedsPage = () => {
       id: 1,
       title: "Mini Bus (Van) Uganda",
       description: "Help provide transportation for ministry activities and outreach in Uganda.",
-      icon: <FaBus size={40} />,
+      icon: <FaBus size={50} className="text-black" />,
       amount: "$15,000",
       impact: "Enables transportation for ministry teams and supplies"
     },
@@ -57,7 +57,7 @@ const MinistryNeedsPage = () => {
       id: 2,
       title: "Sound/Music Equipment",
       description: "Support our worship and outreach with quality sound equipment.",
-      icon: <FaMusic size={40} />,
+      icon: <FaMusic size={50} className="text-black" />,
       amount: "$5,000",
       impact: "Provides essential equipment for church services and events"
     },
@@ -65,7 +65,7 @@ const MinistryNeedsPage = () => {
       id: 3,
       title: "New Laptop Computers (4)",
       description: "Help equip our team with the technology needed for ministry work.",
-      icon: <FaLaptop size={40} />,
+      icon: <FaLaptop size={50} className="text-black" />,
       amount: "$4,000",
       impact: "Provides 4 laptops for ministry administration and outreach"
     },
@@ -73,7 +73,7 @@ const MinistryNeedsPage = () => {
       id: 4,
       title: "Desktop Computers (4)",
       description: "Support our administrative needs with desktop computers.",
-      icon: <FaDesktop size={40} />,
+      icon: <FaDesktop size={50} className="text-black" />,
       amount: "$3,200",
       impact: "Equips our office with 4 desktop computers"
     },
@@ -81,7 +81,7 @@ const MinistryNeedsPage = () => {
       id: 5,
       title: "Digital Cameras (3)",
       description: "Help document our ministry work and share stories of impact.",
-      icon: <FaCamera size={40} />,
+      icon: <FaCamera size={50} className="text-black" />,
       amount: "$1,500",
       impact: "Provides 3 digital cameras for ministry documentation"
     },
@@ -324,27 +324,27 @@ const MinistryNeedsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white py-16">
+    <div className="min-h-screen bg-white py-16 ministry-needs-page">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-blue-600 mb-2 text-center">Ministry Needs</h1>
-          <p className="text-xl text-gray-600 mb-12 text-center">
+          <h1 className="text-4xl font-bold text-black mb-2 text-center">Ministry Needs</h1>
+          <p className="text-xl text-gray-800 mb-12 text-center">
             Support our work and help us make a difference
           </p>
 
           {/* Introduction */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
+          <div className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden mb-12">
             <div className="p-8">
               <div className="flex justify-center mb-6">
-                <FaHandHoldingHeart className="text-blue-600 text-6xl" />
+                <FaHandHoldingHeart className="text-black" style={{ fontSize: '4rem', fill: 'black' }} />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Current Ministry Needs</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-2xl font-bold text-black mb-4 text-center">Current Ministry Needs</h2>
+              <p className="text-black mb-6">
                 International Great Faith Ministries has several ongoing projects and initiatives that need your support.
                 Your generous donations help us continue our work in spreading the Gospel, providing humanitarian aid,
                 and caring for orphaned and vulnerable children.
               </p>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Below are some of our current needs. You can choose to support any of these specific areas or make a
                 general donation that will be allocated where it's needed most.
               </p>
@@ -355,55 +355,55 @@ const MinistryNeedsPage = () => {
           <div className="flex flex-wrap justify-center mb-8">
             <button
               onClick={() => setActiveTab('priority')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-medium transition-colors ${
+              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
                 activeTab === 'priority'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-[#00308F] text-white'
+                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
               }`}
             >
-              High Priority Needs
+              <span className="text-white">HIGH PRIORITY NEEDS</span>
             </button>
             <button
               onClick={() => setActiveTab('monthly')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-medium transition-colors ${
+              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
                 activeTab === 'monthly'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-[#00308F] text-white'
+                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
               }`}
             >
-              Monthly Ongoing Needs
+              <span className="text-white">MONTHLY ONGOING NEEDS</span>
             </button>
             <button
               onClick={() => setActiveTab('toys')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-medium transition-colors ${
+              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
                 activeTab === 'toys'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-[#00308F] text-white'
+                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
               }`}
             >
-              Children's Toys
+              <span className="text-white">CHILDREN'S TOYS</span>
             </button>
             <button
               onClick={() => setActiveTab('women')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-medium transition-colors ${
+              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
                 activeTab === 'women'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-[#00308F] text-white'
+                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
               }`}
             >
-              Women's Ministry
+              <span className="text-white">WOMEN'S MINISTRY</span>
             </button>
           </div>
 
           {/* Category Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-blue-600">
+            <h2 className="text-3xl font-bold text-black">
               {activeTab === 'priority' && 'High Priority Needs'}
               {activeTab === 'monthly' && 'Monthly Ongoing Needs'}
               {activeTab === 'toys' && 'Children\'s Toys'}
               {activeTab === 'women' && 'Women\'s Ministry Needs'}
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-800 mt-2 text-lg">
               {activeTab === 'priority' && 'These are our most urgent needs to continue and expand our ministry work.'}
               {activeTab === 'monthly' && 'These ongoing needs help sustain our daily ministry operations.'}
               {activeTab === 'toys' && 'Help bring joy to children through educational and recreational toys.'}
@@ -416,33 +416,35 @@ const MinistryNeedsPage = () => {
             {getActiveNeeds().map((need) => (
               <div
                 key={need.id}
-                className={`${need.id % 4 === 1 ? 'container-green' : need.id % 4 === 2 ? 'container-purple' : need.id % 4 === 3 ? 'container-blue' : 'container-orange'} rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 group`}
+                className="container-blue rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 group"
               >
-                <div className="text-white mb-4 flex justify-center transform transition-transform duration-300 group-hover:scale-110">
-                  {need.icon}
+                <div className="mb-4 flex justify-center transform transition-transform duration-300 group-hover:scale-110 icon-container">
+                  <div className="text-black" style={{ fontSize: '2.5rem', color: 'black', fill: 'black' }}>
+                    {cloneElement(need.icon, { className: 'text-black', style: { color: 'black', fill: 'black' } })}
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-center transform transition-all duration-300 group-hover:scale-110">{need.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-center transform transition-all duration-300 group-hover:scale-110">{need.title}</h3>
                 <p className="mb-4 text-center transition-all duration-300">
                   {need.description}
                 </p>
-                <div className="bg-gray-50 p-3 rounded-md mb-4 transition-all duration-300 group-hover:bg-blue-50">
-                  <p className="font-medium text-gray-700 text-center transition-all duration-300 group-hover:text-blue-700 group-hover:scale-105 transform">{need.amount}</p>
-                  <p className="text-sm text-gray-600 text-center transition-all duration-300 group-hover:text-blue-600">{need.impact}</p>
+                <div className="bg-white p-3 rounded-md mb-4 transition-all duration-300 group-hover:bg-gray-100 border border-gray-200">
+                  <p className="font-bold text-black text-center transition-all duration-300 group-hover:scale-105 transform">{need.amount}</p>
+                  <p className="text-sm text-gray-800 text-center transition-all duration-300">{need.impact}</p>
                 </div>
                 <a
                   href="#donate-form"
-                  className="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-105 transform"
+                  className="block w-full text-center px-4 py-2 bg-[#00308F] text-white rounded-md font-bold hover:bg-[#1E3A8A] transition-all duration-300 hover:scale-105 transform border-2 border-[#00308F]"
                 >
-                  Support This Need
+                  <span className="text-white">SUPPORT THIS NEED</span>
                 </a>
               </div>
             ))}
           </div>
 
           {/* Donation Form */}
-          <div id="donate-form" className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
+          <div id="donate-form" className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden mb-12">
             <div className="p-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Make a Donation</h2>
+              <h2 className="text-2xl font-bold text-black mb-6 text-center">Make a Donation</h2>
 
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-md">
@@ -605,27 +607,27 @@ const MinistryNeedsPage = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition-colors disabled:bg-blue-400"
+                  className="w-full bg-[#00308F] text-white py-3 rounded-md font-bold hover:bg-[#1E3A8A] transition-colors disabled:bg-[#6B7280] border-2 border-[#00308F]"
                 >
-                  {isSubmitting ? 'Processing...' : 'Donate Now'}
+                  {isSubmitting ? 'Processing...' : 'DONATE NOW'}
                 </button>
               </form>
             </div>
           </div>
 
           {/* Call to Action */}
-          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden">
+          <div className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-semibold mb-4 text-blue-600">Other Ways to Support</h2>
-              <p className="mb-6 text-gray-600">
+              <h2 className="text-2xl font-bold mb-4 text-black">Other Ways to Support</h2>
+              <p className="mb-6 text-black">
                 In addition to financial donations, we also welcome volunteers, prayer partners, and in-kind donations.
                 Contact us to learn more about how you can get involved.
               </p>
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors shadow-md"
+                className="inline-block px-6 py-3 bg-[#00308F] text-white rounded-md font-bold hover:bg-[#1E3A8A] transition-colors shadow-md border-2 border-[#00308F]"
               >
-                Contact Us
+                <span className="text-white">CONTACT US</span>
               </Link>
             </div>
           </div>

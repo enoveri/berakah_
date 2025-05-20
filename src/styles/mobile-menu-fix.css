@@ -1,0 +1,47 @@
+/* Mobile Menu Fixes */
+
+/* Ensure mobile menu is always on top */
+.navbar .md\:hidden {
+  z-index: 9999 !important;
+}
+
+/* Add overlay behind mobile menu */
+body.menu-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+/* Ensure menu button is always clickable */
+.navbar button {
+  position: relative;
+  z-index: 9999;
+}
+
+/* Prevent scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Ensure mobile menu has proper scrolling */
+.navbar .md\:hidden .flex-col {
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
+}
+
+/* Ensure menu items are properly visible */
+.navbar .md\:hidden a,
+.navbar .md\:hidden div {
+  color: black !important;
+  font-weight: 500;
+}
+
+/* Add active state for mobile menu items */
+.navbar .md\:hidden a:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}

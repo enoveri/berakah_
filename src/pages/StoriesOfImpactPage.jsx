@@ -159,24 +159,26 @@ const StoriesOfImpactPage = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="bg-white border border-blue-200 rounded-xl shadow-md overflow-hidden">
+          <div className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-semibold mb-4 text-blue-600">Make a Difference Today</h2>
-              <p className="mb-6 text-gray-600">
+              <h2 className="text-3xl font-bold mb-4 text-black">Make a Difference Today</h2>
+              <p className="mb-6 text-black text-lg">
                 Your support can transform a child's life. Consider sponsoring a child or making a donation to help us continue our work.
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <a
                   href="/sponsor-child"
-                  className="inline-block px-8 py-4 bg-blue-600 text-white rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
+                  className="inline-block px-8 py-4 bg-blue-700 text-white rounded-md font-bold text-xl hover:bg-blue-800 transition-colors shadow-lg border-2 border-black"
+                  style={{ color: 'white !important' }}
                 >
-                  Sponsor a Child
+                  SPONSOR A CHILD
                 </a>
                 <a
                   href="/donate"
-                  className="inline-block px-8 py-4 bg-green-600 text-white rounded-md font-semibold text-lg hover:bg-green-700 transition-colors shadow-md"
+                  className="inline-block px-8 py-4 bg-green-700 text-white rounded-md font-bold text-xl hover:bg-green-800 transition-colors shadow-lg border-2 border-black"
+                  style={{ color: 'white !important' }}
                 >
-                  Donate Now
+                  DONATE NOW
                 </a>
               </div>
             </div>

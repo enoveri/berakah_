@@ -106,11 +106,65 @@ nav a, header a {
 }
 
 /* Exception for buttons with white text */
-.bg-blue-600, .bg-blue-700, .bg-green-600, .bg-green-700 {
+.bg-blue-600, .bg-blue-700, .bg-blue-800, .bg-green-600, .bg-green-700 {
   color: #FFFFFF !important; /* White text for colored buttons */
+}
+
+/* Ensure submit buttons are always visible */
+button[type="submit"] {
+  color: #FFFFFF !important;
+  font-weight: bold !important;
 }
 
 /* Exception for placeholder text */
 ::placeholder {
   color: rgba(0, 0, 0, 0.5) !important; /* Lighter black for placeholders */
+}
+
+/* Ministry containers styling */
+.ministry-container {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ministry-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #93C5FD transparent;
+  padding-right: 5px;
+}
+
+.ministry-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ministry-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ministry-content::-webkit-scrollbar-thumb {
+  background-color: #93C5FD;
+  border-radius: 6px;
+}
+
+.ministry-button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: #1D4ED8;
+  color: white !important;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ministry-button:hover {
+  background-color: #1E40AF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
