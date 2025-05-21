@@ -8,7 +8,7 @@ const SponsorChildPage = () => {
       <div className="relative text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/photos/Berakhah-Child-care-980x586.jpg')" }}
+          style={{ backgroundImage: "url('./photos/Berakhah-Child-care-980x586.jpg')" }}
         ></div>
         {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-10"></div>

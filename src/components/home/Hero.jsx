@@ -7,7 +7,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/photos/call2prayer.jpg')`,
+          backgroundImage: `url('./photos/call2prayer.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           zIndex: 0
@@ -30,7 +30,7 @@ const Hero = () => {
             objectFit: 'cover'
           }}
         >
-          <source src="/videos/gidudu.org home video.mp4" type="video/mp4" />
+          <source src="./videos/gidudu.org home video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

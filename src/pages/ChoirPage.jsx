@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaDownload, FaMusic, FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaBed, FaBookOpen } from 'react-icons/fa';
 import Slider from 'react-slick';
+import ReCaptchaComponent from '../components/common/ReCaptcha';
+import useForm from '../hooks/useForm';
 
 const ChoirPage = () => {
   const [showBookingForm, setShowBookingForm] = useState(false);
@@ -8,6 +10,41 @@ const ChoirPage = () => {
   const toggleBookingForm = () => {
     setShowBookingForm(!showBookingForm);
   };
+
+  // Form initial values
+  const initialValues = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    organization: '',
+    eventDate: '',
+    eventTime: '',
+    location: '',
+    additionalInfo: ''
+  };
+
+  // Mock submit function (would connect to backend in a real app)
+  const handleSubmit = async (values) => {
+    // Simulate API call
+    return new Promise((resolve) => {
+      console.log('Booking form submitted with values:', values);
+      setTimeout(resolve, 1000);
+    });
+  };
+
+  const {
+    values,
+    errors,
+    isSubmitting,
+    submitMessage,
+    submitStatus,
+    recaptchaValue,
+    resetRecaptcha,
+    handleChange,
+    handleRecaptchaChange,
+    handleSubmit: submitForm
+  } = useForm(initialValues, handleSubmit);
 
   // Slider settings for the carousels
   const sliderSettings = {
@@ -23,17 +60,17 @@ const ChoirPage = () => {
 
   // Images for Children's Choir section
   const choirImages = [
-    '/photos/Berakhah-Choir-2024-1.jpg',
-    '/photos/Berakhah-Choir-2024-8.jpg',
-    '/photos/Berakhah-Choir-2024-12.jpg',
-    '/photos/Berakhah-Choir-2024-17.jpg'
+    './photos/Berakhah-Choir-2024-1.jpg',
+    './photos/Berakhah-Choir-2024-8.jpg',
+    './photos/Berakhah-Choir-2024-12.jpg',
+    './photos/Berakhah-Choir-2024-17.jpg'
   ];
 
   // Images for Performing Locations section
   const performingImages = [
-    '/photos/Berakhah-Choir-2024-10.jpg',
-    '/photos/Berakhah-Choir-2024-11.jpg',
-    '/photos/Berakhah-Choir-2024-13.jpg'
+    './photos/Berakhah-Choir-2024-10.jpg',
+    './photos/Berakhah-Choir-2024-11.jpg',
+    './photos/Berakhah-Choir-2024-13.jpg'
   ];
 
   return (
@@ -42,7 +79,7 @@ const ChoirPage = () => {
       <div className="relative text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/photos/Berakhah-Choir-2024-12.jpg')" }}
+          style={{ backgroundImage: "url('./photos/Berakhah-Choir-2024-12.jpg')" }}
         ></div>
         {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 dark-blue-overlay"></div>
@@ -244,7 +281,13 @@ const ChoirPage = () => {
                 <div className="p-8">
                   <h2 className="text-2xl font-semibold dark-blue-heading mb-6 text-center">Choir Booking Form</h2>
 
-                  <form className="space-y-8">
+                  {submitStatus === 'success' && (
+                    <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-md">
+                      {submitMessage || "Your booking request has been submitted successfully. We'll contact you soon to confirm the details."}
+                    </div>
+                  )}
+
+                  <form onSubmit={submitForm} className="space-y-8">
                     {/* Personal Details */}
                     <div>
                       <h3 className="text-xl font-medium dark-blue-text-accent mb-4">Personal Details</h3>
@@ -254,36 +297,55 @@ const ChoirPage = () => {
                           <input
                             type="text"
                             id="firstName"
+                            name="firstName"
+                            value={values.firstName}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
                             placeholder="Your first name"
+                            required
                           />
+                          {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
                         </div>
                         <div>
                           <label className="block dark-blue-text mb-2" htmlFor="lastName">Last Name</label>
                           <input
                             type="text"
                             id="lastName"
+                            name="lastName"
+                            value={values.lastName}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
                             placeholder="Your last name"
+                            required
                           />
+                          {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
                         </div>
                         <div>
                           <label className="block dark-blue-text mb-2" htmlFor="email">Email</label>
                           <input
                             type="email"
                             id="email"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
                             placeholder="Your email address"
+                            required
                           />
+                          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                         </div>
                         <div>
                           <label className="block dark-blue-text mb-2" htmlFor="phone">Phone</label>
                           <input
                             type="tel"
                             id="phone"
+                            name="phone"
+                            value={values.phone}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
                             placeholder="Your phone number"
                           />
+                          {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                         </div>
                       </div>
                     </div>
@@ -297,53 +359,89 @@ const ChoirPage = () => {
                           <input
                             type="text"
                             id="organization"
+                            name="organization"
+                            value={values.organization}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
                             placeholder="Your organization or church name"
+                            required
                           />
+                          {errors.organization && <p className="text-red-500 text-sm mt-1">{errors.organization}</p>}
                         </div>
                         <div>
                           <label className="block dark-blue-text mb-2" htmlFor="eventDate">Preferred Date</label>
                           <input
                             type="date"
                             id="eventDate"
+                            name="eventDate"
+                            value={values.eventDate}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
+                            required
                           />
+                          {errors.eventDate && <p className="text-red-500 text-sm mt-1">{errors.eventDate}</p>}
                         </div>
                         <div>
                           <label className="block dark-blue-text mb-2" htmlFor="eventTime">Preferred Time</label>
                           <input
                             type="time"
                             id="eventTime"
+                            name="eventTime"
+                            value={values.eventTime}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
+                            required
                           />
+                          {errors.eventTime && <p className="text-red-500 text-sm mt-1">{errors.eventTime}</p>}
                         </div>
                         <div>
                           <label className="block dark-blue-text mb-2" htmlFor="location">Event Location</label>
                           <input
                             type="text"
                             id="location"
+                            name="location"
+                            value={values.location}
+                            onChange={handleChange}
                             className="dark-blue-form-control w-full"
                             placeholder="Address of the event"
+                            required
                           />
+                          {errors.location && <p className="text-red-500 text-sm mt-1">{errors.location}</p>}
                         </div>
                         <div className="md:col-span-2">
                           <label className="block dark-blue-text mb-2" htmlFor="additionalInfo">Additional Information</label>
                           <textarea
                             id="additionalInfo"
+                            name="additionalInfo"
+                            value={values.additionalInfo}
+                            onChange={handleChange}
                             rows="4"
                             className="dark-blue-form-control w-full"
                             placeholder="Any additional details about your event"
                           ></textarea>
+                          {errors.additionalInfo && <p className="text-red-500 text-sm mt-1">{errors.additionalInfo}</p>}
                         </div>
+                      </div>
+                    </div>
+
+                    {/* ReCAPTCHA */}
+                    <div className="flex justify-center">
+                      <div>
+                        <ReCaptchaComponent
+                          onChange={handleRecaptchaChange}
+                          reset={resetRecaptcha}
+                        />
+                        {errors.recaptcha && <p className="text-red-500 text-sm mt-1">{errors.recaptcha}</p>}
                       </div>
                     </div>
 
                     <div className="text-center">
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="dark-blue-button dark-blue-button-orange inline-block px-6 py-3 rounded-md font-medium transition-all"
                       >
-                        Submit Booking Request
+                        {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
                       </button>
                     </div>
                   </form>

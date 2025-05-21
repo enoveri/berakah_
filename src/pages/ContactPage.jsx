@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import useForm from '../hooks/useForm';
+import ReCaptchaComponent from '../components/common/ReCaptcha';
 
 const ContactPage = () => {
   const initialValues = {
@@ -25,7 +26,10 @@ const ContactPage = () => {
     isSubmitting,
     submitMessage,
     submitStatus,
+    recaptchaValue,
+    resetRecaptcha,
     handleChange,
+    handleRecaptchaChange,
     handleSubmit: submitForm
   } = useForm(initialValues, handleSubmit);
 
@@ -190,6 +194,17 @@ const ContactPage = () => {
                     ></textarea>
                     {errors.message && (
                       <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                    )}
+                  </div>
+
+                  {/* ReCAPTCHA */}
+                  <div className="mb-6">
+                    <ReCaptchaComponent
+                      onChange={handleRecaptchaChange}
+                      reset={resetRecaptcha}
+                    />
+                    {errors.recaptcha && (
+                      <p className="text-red-500 text-sm mt-1">{errors.recaptcha}</p>
                     )}
                   </div>
 

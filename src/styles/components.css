@@ -379,6 +379,148 @@ label {
   max-height: 500px;
 }
 
+/* ReCAPTCHA Styles */
+.recaptcha-container {
+  margin-bottom: 1.5rem;
+}
+
+.recaptcha-container.flex {
+  display: flex;
+  justify-content: center;
+}
+
+/* Make reCAPTCHA responsive */
+.recaptcha-responsive {
+  display: inline-block;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+
+  .recaptcha-container.flex .g-recaptcha {
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 350px) {
+  .g-recaptcha {
+    transform: scale(0.75);
+  }
+}
+
+/* Ensure modal is always at the top on mobile */
+@media (max-width: 768px) {
+  .fixed.inset-0.z-50.flex.items-start.justify-center {
+    align-items: flex-start !important;
+  }
+
+  .dark-blue-section.max-w-2xl.w-full {
+    margin-top: 0 !important;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 50;
+  padding: 0;
+  padding-top: 0;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.modal-container {
+  background: linear-gradient(135deg, #1E3A8A 0%, #5D4BA0 100%);
+  border-radius: 0.75rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(0);
+  transition: transform 0.3s ease-out;
+  animation: modal-appear 0.3s ease-out forwards;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close-button:hover {
+  color: #93C5FD;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Dreamy button style */
+.dreamy-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dreamy-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+  color: #FFF8E6 !important;
+}
+
+.dreamy-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 /* Responsive styles */
 @media (max-width: 1200px) {
   .watoto-nav-item {

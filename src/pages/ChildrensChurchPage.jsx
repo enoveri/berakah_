@@ -20,9 +20,9 @@ const ChildrensChurchPage = () => {
 
   // Images for the slideshow
   const childrenImages = [
-    '/photos/childrens_church-1-980x653.jpeg',
-    '/photos/childrens_church-8-980x735.jpeg',
-    '/photos/Berakhah-Choir-2024-42-480x320.jpg'
+    './photos/childrens_church-1-980x653.jpeg',
+    './photos/childrens_church-8-980x735.jpeg',
+    './photos/Berakhah-Choir-2024-42-480x320.jpg'
   ];
 
   return (
@@ -31,7 +31,7 @@ const ChildrensChurchPage = () => {
       <div className="relative text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/photos/childrens_church-8-980x735.jpeg')" }}
+          style={{ backgroundImage: "url('./photos/childrens_church-8-980x735.jpeg')" }}
         ></div>
         {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 dark-blue-overlay"></div>

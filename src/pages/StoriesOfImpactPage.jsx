@@ -165,7 +165,7 @@ const StoriesOfImpactPage = () => {
                         e2.target.onerror = (e3) => {
                           console.error("Error loading all thumbnails, using fallback image");
                           e3.target.onerror = null; // Prevent infinite loop
-                          e3.target.src = "/photos/call2prayer.jpg"; // Final fallback image
+                          e3.target.src = "./photos/call2prayer.jpg"; // Final fallback image
                         };
                         e2.target.src = `https://i.ytimg.com/vi/${story.videoId}/default.jpg`; // Try default quality
                       };

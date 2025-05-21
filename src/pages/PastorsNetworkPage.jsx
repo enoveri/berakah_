@@ -20,8 +20,8 @@ const PastorsNetworkPage = () => {
 
   // Pastor images
   const pastorImages = [
-    '/photos/pastors-1.jpg',
-    '/photos/pastors-2.jpg'
+    './photos/pastors-1.jpg',
+    './photos/pastors-2.jpg'
   ];
 
   return (
@@ -30,7 +30,7 @@ const PastorsNetworkPage = () => {
       <div className="relative text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/photos/pastors-1.jpg')" }}
+          style={{ backgroundImage: "url('./photos/pastors-1.jpg')" }}
         ></div>
         {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 dark-blue-overlay"></div>

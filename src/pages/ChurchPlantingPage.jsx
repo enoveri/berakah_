@@ -20,9 +20,9 @@ const ChurchPlantingPage = () => {
 
   // Images for the slideshow
   const churchImages = [
-    '/photos/church-planting-1-980x653.jpeg',
-    '/photos/church-planting-10-980x551.jpeg',
-    '/photos/church-planting-12-980x735.jpeg'
+    './photos/church-planting-1-980x653.jpeg',
+    './photos/church-planting-10-980x551.jpeg',
+    './photos/church-planting-12-980x735.jpeg'
   ];
 
   return (
@@ -31,7 +31,7 @@ const ChurchPlantingPage = () => {
       <div className="relative text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/photos/church-planting-12-980x735.jpeg')" }}
+          style={{ backgroundImage: "url('./photos/church-planting-12-980x735.jpeg')" }}
         ></div>
         {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 dark-blue-overlay"></div>

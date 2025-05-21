@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaHandHoldingHeart, FaUsers, FaPrayingHands, FaGlobe, FaChild, FaHeart } from 'react-icons/fa';
 import useForm from '../hooks/useForm';
+import ReCaptchaComponent from '../components/common/ReCaptcha';
 
 const PartnersPage = () => {
   // Form initial values
@@ -34,7 +35,10 @@ const PartnersPage = () => {
     isSubmitting,
     submitMessage,
     submitStatus,
+    recaptchaValue,
+    resetRecaptcha,
     handleChange,
+    handleRecaptchaChange,
     handleSubmit: submitForm
   } = useForm(initialValues, handleSubmit);
 
@@ -44,7 +48,7 @@ const PartnersPage = () => {
       <div className="sponsor-hero-section">
         <div
           className="bg-image"
-          style={{ backgroundImage: "url('/photos/pastors-2.jpg')" }}
+          style={{ backgroundImage: "url('./photos/pastors-2.jpg')" }}
         ></div>
         <div className="overlay"></div>
         <div className="content">
@@ -344,16 +348,16 @@ const PartnersPage = () => {
                     ></textarea>
                   </div>
 
-                  {/* reCAPTCHA placeholder */}
+                  {/* reCAPTCHA */}
                   <div className="mb-6">
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="human"
-                        className="mr-2"
-                      />
-                      <label htmlFor="human" className="text-white">I am human</label>
-                    </div>
+                    <ReCaptchaComponent
+                      onChange={handleRecaptchaChange}
+                      reset={resetRecaptcha}
+                      className="flex justify-center"
+                    />
+                    {errors.recaptcha && (
+                      <p className="text-red-300 text-sm mt-1">{errors.recaptcha}</p>
+                    )}
                   </div>
 
                   <div className="text-center">

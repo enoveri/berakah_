@@ -20,9 +20,9 @@ const WidowsElderlyCarePage = () => {
 
   // Images for the slideshow
   const careImages = [
-    '/photos/widows_elderly_care-1-480x320.jpeg',
-    '/photos/widows_elderly_care-7-1024x683.jpeg',
-    '/photos/widows_elderly_care-8-980x653.jpeg'
+    './photos/widows_elderly_care-1-480x320.jpeg',
+    './photos/widows_elderly_care-7-1024x683.jpeg',
+    './photos/widows_elderly_care-8-980x653.jpeg'
   ];
 
   return (
@@ -31,7 +31,7 @@ const WidowsElderlyCarePage = () => {
       <div className="relative text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/photos/widows_elderly_care-7-1024x683.jpeg')" }}
+          style={{ backgroundImage: "url('./photos/widows_elderly_care-7-1024x683.jpeg')" }}
         ></div>
         {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 dark-blue-overlay"></div>

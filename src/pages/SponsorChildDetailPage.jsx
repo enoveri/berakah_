@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useForm from '../hooks/useForm';
+import { FaChild, FaHeart } from 'react-icons/fa';
+import ReCaptchaComponent from '../components/common/ReCaptcha';
 
 const SponsorChildDetailPage = () => {
   const { childName } = useParams();
@@ -37,16 +39,26 @@ const SponsorChildDetailPage = () => {
     isSubmitting,
     submitMessage,
     submitStatus,
+    recaptchaValue,
+    resetRecaptcha,
     handleChange,
+    handleRecaptchaChange,
     handleSubmit: submitForm
   } = useForm(initialValues, handleSubmit);
 
   return (
-    <div className="min-h-screen bg-white py-16">
+    <div className="min-h-screen py-16" style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%)' }}>
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold mb-2" style={{ color: '#3B9AE1' }}>Sponsor {decodedChildName}</h1>
+            <p className="text-xl mb-4" style={{ color: '#5D4BA0' }}>
+              Make a lasting impact on a child's life
+            </p>
+          </div>
+
           <div className="mb-8">
-            <Link to="/sponsor-child" className="text-blue-600 hover:text-blue-800 flex items-center">
+            <Link to="/sponsor-child" className="text-blue-600 hover:text-blue-800 flex items-center w-fit">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
               </svg>
@@ -54,24 +66,37 @@ const SponsorChildDetailPage = () => {
             </Link>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-            <div className="p-8">
-              <h1 className="text-3xl font-bold text-blue-600 mb-4">Sponsor {decodedChildName}</h1>
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 mb-6 md:mb-0 md:pr-8">
-                  <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+          <div className="flex flex-col md:flex-row gap-8 mb-8">
+            {/* Child Information */}
+            <div className="md:w-1/3">
+              <div className="rounded-xl shadow-md overflow-hidden glow-container" style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #5D4BA0 100%)' }}>
+                <div className="p-6">
+                  <div className="flex justify-center mb-4">
+                    <FaChild className="text-6xl" style={{ color: '#FFAF60', filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))' }} />
+                  </div>
+                  <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center mb-4">
                     <span className="text-gray-500">Child Photo</span>
                   </div>
-                  <div className="mt-4">
-                    <h2 className="text-xl font-semibold text-gray-800 mb-2">{decodedChildName}</h2>
-                    <p className="text-gray-600 mb-1">Age: [Child's Age]</p>
-                    <p className="text-gray-600 mb-1">Location: Mbale, Uganda</p>
-                    <p className="text-gray-600">Interests: [Child's Interests]</p>
+                  <div className="text-center">
+                    <h2 className="text-xl font-semibold mb-2" style={{ color: '#FFD8A8' }}>{decodedChildName}</h2>
+                    <p className="mb-1" style={{ color: '#FFF8E6' }}>Age: [Child's Age]</p>
+                    <p className="mb-1" style={{ color: '#FFF8E6' }}>Location: Mbale, Uganda</p>
+                    <p style={{ color: '#FFF8E6' }}>Interests: [Child's Interests]</p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="md:w-2/3">
-                  <p className="text-gray-700 mb-6">
+            {/* Sponsorship Form */}
+            <div className="md:w-2/3">
+              <div className="rounded-xl shadow-md overflow-hidden glow-container" style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #5D4BA0 100%)' }}>
+                <div className="p-8">
+                  <div className="flex justify-center mb-6">
+                    <FaHeart className="text-6xl" style={{ color: '#FFAF60', filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))' }} />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: '#FFD8A8' }}>Sponsor {decodedChildName}</h2>
+
+                  <p className="mb-6 text-center" style={{ color: '#FFF8E6' }}>
                     By sponsoring {decodedChildName}, you'll be providing essential support for their education,
                     healthcare, nutrition, and overall well-being. Your monthly contribution will make a significant
                     difference in their life and future.
@@ -92,7 +117,7 @@ const SponsorChildDetailPage = () => {
                   <form onSubmit={submitForm}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                       <div>
-                        <label htmlFor="firstName" className="block text-gray-700 mb-1">First Name <span className="text-red-500">*</span></label>
+                        <label htmlFor="firstName" className="block text-white font-medium mb-1">First Name <span className="text-red-300">*</span></label>
                         <input
                           type="text"
                           id="firstName"
@@ -102,13 +127,14 @@ const SponsorChildDetailPage = () => {
                           className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                             errors.firstName ? 'border-red-500' : 'border-gray-300'
                           }`}
+                          required
                         />
                         {errors.firstName && (
-                          <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                          <p className="text-red-300 text-sm mt-1">{errors.firstName}</p>
                         )}
                       </div>
                       <div>
-                        <label htmlFor="lastName" className="block text-gray-700 mb-1">Last Name <span className="text-red-500">*</span></label>
+                        <label htmlFor="lastName" className="block text-white font-medium mb-1">Last Name <span className="text-red-300">*</span></label>
                         <input
                           type="text"
                           id="lastName"
@@ -118,15 +144,16 @@ const SponsorChildDetailPage = () => {
                           className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                             errors.lastName ? 'border-red-500' : 'border-gray-300'
                           }`}
+                          required
                         />
                         {errors.lastName && (
-                          <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                          <p className="text-red-300 text-sm mt-1">{errors.lastName}</p>
                         )}
                       </div>
                     </div>
 
                     <div className="mb-4">
-                      <label htmlFor="email" className="block text-gray-700 mb-1">Email <span className="text-red-500">*</span></label>
+                      <label htmlFor="email" className="block text-white font-medium mb-1">Email <span className="text-red-300">*</span></label>
                       <input
                         type="email"
                         id="email"
@@ -136,14 +163,15 @@ const SponsorChildDetailPage = () => {
                         className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                           errors.email ? 'border-red-500' : 'border-gray-300'
                         }`}
+                        required
                       />
                       {errors.email && (
-                        <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                        <p className="text-red-300 text-sm mt-1">{errors.email}</p>
                       )}
                     </div>
 
                     <div className="mb-4">
-                      <label htmlFor="phone" className="block text-gray-700 mb-1">Phone</label>
+                      <label htmlFor="phone" className="block text-white font-medium mb-1">Phone</label>
                       <input
                         type="tel"
                         id="phone"
@@ -152,10 +180,13 @@ const SponsorChildDetailPage = () => {
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
+                      {errors.phone && (
+                        <p className="text-red-300 text-sm mt-1">{errors.phone}</p>
+                      )}
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-gray-700 mb-1">Sponsorship Amount <span className="text-red-500">*</span></label>
+                      <label className="block text-white font-medium mb-2">Sponsorship Amount <span className="text-red-300">*</span></label>
                       <div className="grid grid-cols-3 gap-4">
                         <label className="flex items-center">
                           <input
@@ -166,7 +197,7 @@ const SponsorChildDetailPage = () => {
                             onChange={handleChange}
                             className="mr-2"
                           />
-                          $20/month
+                          <span className="text-white">$20/month</span>
                         </label>
                         <label className="flex items-center">
                           <input
@@ -177,7 +208,7 @@ const SponsorChildDetailPage = () => {
                             onChange={handleChange}
                             className="mr-2"
                           />
-                          $50/month
+                          <span className="text-white">$50/month</span>
                         </label>
                         <label className="flex items-center">
                           <input
@@ -188,13 +219,13 @@ const SponsorChildDetailPage = () => {
                             onChange={handleChange}
                             className="mr-2"
                           />
-                          $100/month
+                          <span className="text-white">$100/month</span>
                         </label>
                       </div>
                     </div>
 
                     <div className="mb-6">
-                      <label htmlFor="message" className="block text-gray-700 mb-1">Message (Optional)</label>
+                      <label htmlFor="message" className="block text-white font-medium mb-1">Message (Optional)</label>
                       <textarea
                         id="message"
                         name="message"
@@ -206,13 +237,28 @@ const SponsorChildDetailPage = () => {
                       ></textarea>
                     </div>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-blue-600 text-white py-4 rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md disabled:bg-blue-400"
-                    >
-                      {isSubmitting ? 'Processing...' : 'Sponsor Now'}
-                    </button>
+                    {/* ReCAPTCHA */}
+                    <div className="mb-6">
+                      <ReCaptchaComponent
+                        onChange={handleRecaptchaChange}
+                        reset={resetRecaptcha}
+                        className="flex justify-center"
+                      />
+                      {errors.recaptcha && (
+                        <p className="text-red-300 text-sm mt-1">{errors.recaptcha}</p>
+                      )}
+                    </div>
+
+                    <div className="text-center">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="dreamy-button px-8 py-3 rounded-md font-bold transition-all"
+                        style={{ background: 'linear-gradient(135deg, #E67E22 0%, #B54708 100%)', color: '#FFF8E6' }}
+                      >
+                        {isSubmitting ? 'Processing...' : 'SPONSOR NOW'}
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

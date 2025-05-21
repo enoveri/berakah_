@@ -9,9 +9,13 @@ import {
   FaFemale, FaBuilding, FaCut, FaTools
 } from 'react-icons/fa';
 import useForm from '../hooks/useForm';
+import DonationModal from '../components/common/DonationModal';
+import ReCaptchaComponent from '../components/common/ReCaptcha';
 
 const MinistryNeedsPage = () => {
   const [activeTab, setActiveTab] = useState('priority');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedNeed, setSelectedNeed] = useState(null);
 
   // Form initial values
   const initialValues = {
@@ -29,7 +33,13 @@ const MinistryNeedsPage = () => {
     // Simulate API call
     return new Promise((resolve) => {
       console.log('Form submitted with values:', values);
-      setTimeout(resolve, 1000);
+      setTimeout(() => {
+        resolve();
+        // Close modal after successful submission
+        if (isModalOpen) {
+          setTimeout(() => setIsModalOpen(false), 2000);
+        }
+      }, 1000);
     });
   };
 
@@ -39,9 +49,36 @@ const MinistryNeedsPage = () => {
     isSubmitting,
     submitMessage,
     submitStatus,
+    recaptchaValue,
+    resetRecaptcha,
     handleChange,
-    handleSubmit: submitForm
+    handleRecaptchaChange,
+    handleSubmit: submitForm,
+    resetForm
   } = useForm(initialValues, handleSubmit);
+
+  // Handle opening the modal with the selected need
+  const handleOpenModal = (need) => {
+    setSelectedNeed(need);
+    // Pre-fill the donation purpose and amount
+    resetForm();
+    // Update the donation purpose based on the selected need
+    handleChange({
+      target: {
+        name: 'donationPurpose',
+        value: need.title
+      }
+    });
+    // Set the donation amount (remove $ and /month if present)
+    const cleanAmount = need.amount.replace('$', '').replace('/month', '');
+    handleChange({
+      target: {
+        name: 'donationAmount',
+        value: cleanAmount
+      }
+    });
+    setIsModalOpen(true);
+  };
 
   // High Priority Needs
   const priorityNeeds = [
@@ -433,6 +470,23 @@ const MinistryNeedsPage = () => {
                 </div>
                 <a
                   href="#donate-form"
+                  onClick={(e) => {
+                    // Pre-fill the form with the selected need
+                    resetForm();
+                    handleChange({
+                      target: {
+                        name: 'donationPurpose',
+                        value: need.title
+                      }
+                    });
+                    const cleanAmount = need.amount.replace('$', '').replace('/month', '');
+                    handleChange({
+                      target: {
+                        name: 'donationAmount',
+                        value: cleanAmount
+                      }
+                    });
+                  }}
                   className="dark-blue-button dark-blue-button-orange block w-full text-center px-4 py-2 rounded-md font-bold transition-all duration-300 hover:scale-105 transform"
                 >
                   SUPPORT THIS NEED
@@ -633,6 +687,25 @@ const MinistryNeedsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Donation Modal */}
+      <DonationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        selectedNeed={selectedNeed}
+        formState={{
+          values,
+          errors,
+          isSubmitting,
+          submitMessage,
+          submitStatus,
+          recaptchaValue,
+          resetRecaptcha,
+          handleChange,
+          handleRecaptchaChange,
+          handleSubmit: submitForm
+        }}
+      />
     </div>
   );
 };

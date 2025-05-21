@@ -10,21 +10,21 @@ const LifeAtChurch = () => {
     {
       id: 1,
       title: 'A Church after God\'s Heart',
-      image: '/photos/call2prayer.jpg',
+      image: './photos/call2prayer.jpg',
       description: 'Our Vision: A Church after God\'s heart committed to Evangelism, Loving People and Changing Lives.',
       link: '/about-call2prayer'
     },
     {
       id: 2,
       title: 'Our Choir',
-      image: '/photos/Berakhah-Choir-2024-8.jpg',
+      image: './photos/Berakhah-Choir-2024-8.jpg',
       description: 'We believe that lifting people\'s spirits to have an experience with Jesus Christ is the bond that drives our vision.',
       link: '/choir'
     },
     {
       id: 3,
       title: 'Children\'s Church',
-      image: '/photos/Berakhah-Child-care-980x586.jpg',
+      image: './photos/Berakhah-Child-care-980x586.jpg',
       description: 'Every Sunday we provide a wonderful children\'s church where children are given a strong foundation in the belief of our Lord Jesus Christ.',
       link: '/childrens-church'
     }

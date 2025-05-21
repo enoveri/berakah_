@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPrayingHands, FaHandHoldingHeart, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import useForm from '../hooks/useForm';
+import ReCaptchaComponent from '../components/common/ReCaptcha';
 
 const PrayerRequestsPage = () => {
   // Check localStorage for activeTab preference
@@ -61,7 +62,10 @@ const PrayerRequestsPage = () => {
     isSubmitting: prayerIsSubmitting,
     submitMessage: prayerSubmitMessage,
     submitStatus: prayerSubmitStatus,
+    recaptchaValue: prayerRecaptchaValue,
+    resetRecaptcha: prayerResetRecaptcha,
     handleChange: handlePrayerChange,
+    handleRecaptchaChange: handlePrayerRecaptchaChange,
     handleSubmit: submitPrayerForm
   } = useForm(prayerRequestInitialValues, handlePrayerRequestSubmit);
 
@@ -97,7 +101,10 @@ const PrayerRequestsPage = () => {
     isSubmitting: testimonyIsSubmitting,
     submitMessage: testimonySubmitMessage,
     submitStatus: testimonySubmitStatus,
+    recaptchaValue: testimonyRecaptchaValue,
+    resetRecaptcha: testimonyResetRecaptcha,
     handleChange: handleTestimonyChange,
+    handleRecaptchaChange: handleTestimonyRecaptchaChange,
     handleSubmit: submitTestimonyForm
   } = useForm(testimonyInitialValues, handleTestimonySubmit);
 
@@ -287,6 +294,18 @@ const PrayerRequestsPage = () => {
                     </label>
                   </div>
 
+                  {/* ReCAPTCHA */}
+                  <div className="mb-6">
+                    <ReCaptchaComponent
+                      onChange={handlePrayerRecaptchaChange}
+                      reset={prayerResetRecaptcha}
+                      className="flex justify-center"
+                    />
+                    {prayerErrors.recaptcha && (
+                      <p className="text-red-300 text-sm mt-1">{prayerErrors.recaptcha}</p>
+                    )}
+                  </div>
+
                   <div className="text-center">
                     <button
                       type="submit"
@@ -389,6 +408,18 @@ const PrayerRequestsPage = () => {
                       />
                       <span className="ml-2 text-white">I give permission to share my testimony (we may edit for length and clarity)</span>
                     </label>
+                  </div>
+
+                  {/* ReCAPTCHA */}
+                  <div className="mb-6">
+                    <ReCaptchaComponent
+                      onChange={handleTestimonyRecaptchaChange}
+                      reset={testimonyResetRecaptcha}
+                      className="flex justify-center"
+                    />
+                    {testimonyErrors.recaptcha && (
+                      <p className="text-red-300 text-sm mt-1">{testimonyErrors.recaptcha}</p>
+                    )}
                   </div>
 
                   <div className="text-center">

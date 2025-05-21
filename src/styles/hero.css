@@ -1,0 +1,107 @@
+/* 
+ * HERO.CSS
+ * Styles for hero sections across the site
+ */
+
+/* Sponsor Hero Section - used on multiple pages */
+.sponsor-hero-section {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  color: white;
+  overflow: hidden;
+}
+
+.sponsor-hero-section .bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.sponsor-hero-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.sponsor-hero-section .content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.sponsor-hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sponsor-hero-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sponsor-hero-section p {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.sponsor-hero-section .cta-button {
+  display: inline-block;
+  background-color: #3B82F6;
+  color: white;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sponsor-hero-section .cta-button:hover {
+  background-color: #2563EB;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sponsor-hero-section {
+    height: auto;
+    min-height: 400px;
+    padding: 4rem 0;
+  }
+  
+  .sponsor-hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .sponsor-hero-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .sponsor-hero-section p {
+    font-size: 1rem;
+  }
+}
