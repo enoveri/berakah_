@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Great Faith Ministries</title>
+  <script>
+    // Redirect to the homepage with the correct hash route
+    (function() {
+      var path = window.location.pathname;
+      var cleanPath = path.replace(/^\/+|\/+$/g, ''); // Remove leading/trailing slashes
+      
+      // If there's a path, redirect to the hash route
+      if (cleanPath) {
+        window.location.replace(window.location.origin + '/#/' + cleanPath);
+      } else {
+        // If no path, just go to the homepage
+        window.location.replace(window.location.origin);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>

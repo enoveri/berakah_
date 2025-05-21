@@ -1,207 +1,268 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaTiktok, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  FaBars,
+  FaTimes,
+  FaChevronDown,
+  FaHome,
+  FaInfoCircle,
+  FaBook,
+  FaHandshake,
+  FaVideo,
+  FaHeart,
+  FaEnvelope,
+  FaPrayingHands,
+  FaChurch,
+  FaUsers,
+  FaChild,
+  FaHandHoldingHeart
+} from 'react-icons/fa';
 import { useAppContext } from '../../context/AppContext.jsx';
 
 const Header = () => {
   const { isMenuOpen, toggleMenu } = useAppContext();
-  const [showDonateDropdown, setShowDonateDropdown] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState({
+    ministries: false,
+    donate: false
+  });
+
+  // Get current location
+  const location = useLocation();
+
+  // Function to check if a link is active
+  const isActive = (path) => {
+    // Remove the hash and get the path
+    const currentPath = location.pathname.replace('#', '');
+    // For the home page
+    if (path === '/' && currentPath === '/') {
+      return true;
+    }
+    // For other pages
+    return path !== '/' && currentPath.startsWith(path);
+  };
+
+  // Handle scroll event to add shadow and shrink header
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+        document.body.classList.add('has-sticky-header');
+      } else {
+        setScrolled(false);
+        document.body.classList.remove('has-sticky-header');
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.classList.remove('has-sticky-header');
+    };
+  }, []);
+
+  // Toggle mobile dropdown
+  const toggleMobileDropdown = (dropdown) => {
+    setOpenDropdowns(prev => ({
+      ...prev,
+      [dropdown]: !prev[dropdown]
+    }));
+  };
 
   return (
-    <header className="navbar shadow-md w-full border-b border-gray-200 bg-white">
-      {/* Social Media Icons moved to the top right corner */}
-      <div className="hidden md:flex justify-end items-center py-1 px-6 space-x-4 bg-white">
-        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-green-500">
-          <FaWhatsapp />
-        </a>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-600">
-          <FaFacebook />
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-pink-600">
-          <FaInstagram />
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-400">
-          <FaTwitter />
-        </a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-red-600">
-          <FaYoutube />
-        </a>
-        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-black">
-          <FaTiktok />
-        </a>
-      </div>
-
-      {/* Main Navigation */}
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header className={`watoto-navbar ${scrolled ? 'header-shadow' : ''}`}>
+      <div className="watoto-container">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src="/photos/Gidudu.org_logo.png"
-            alt="International great faith ministries"
-            className="h-12 md:h-14"
-          />
-        </Link>
+        <div className="watoto-logo-container">
+          <Link to="/">
+            <img
+              src="./photos/Gidudu.org_logo.png"
+              alt="International Great Faith Ministries"
+              className={`watoto-logo ${scrolled ? 'shrink' : ''}`}
+            />
+          </Link>
+        </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-black focus:outline-none"
-          onClick={toggleMenu}
+          className="watoto-mobile-menu-button"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
         >
-          {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <Link to="/" className="text-black hover:text-blue-600 font-medium leaf-nav-item">Home</Link>
-          <Link to="/about" className="text-black hover:text-blue-600 font-medium leaf-nav-item">About</Link>
-          <Link to="/statement-of-faith" className="text-black hover:text-blue-600 font-medium leaf-nav-item">Statement of Faith</Link>
-          <Link to="/partners" className="text-black hover:text-blue-600 font-medium leaf-nav-item">Partners</Link>
-          <Link to="/stories-of-impact" className="text-black hover:text-blue-600 font-medium leaf-nav-item">Stories of Impact</Link>
+        <nav className="watoto-nav-container">
+          <div className="watoto-nav-items">
+            <Link to="/" className={`watoto-nav-item ${isActive('/') ? 'active' : ''}`}>
+              HOME
+            </Link>
 
-          {/* Donate Dropdown */}
-          <div className="relative group">
-            <button
-              className="flex items-center text-black hover:text-blue-600 font-medium leaf-nav-item"
-              onMouseEnter={() => setShowDonateDropdown(true)}
-              onClick={() => setShowDonateDropdown(!showDonateDropdown)}
-            >
-              Donate <FaChevronDown className="ml-1 h-3 w-3" />
-            </button>
+            <Link to="/about" className={`watoto-nav-item ${isActive('/about') ? 'active' : ''}`}>
+              ABOUT
+            </Link>
 
-            {/* Dropdown Menu */}
-            <div
-              className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 z-50 bg-white ${
-                showDonateDropdown ? 'opacity-100 visible' : 'opacity-0 invisible'
-              }`}
-              onMouseLeave={() => setShowDonateDropdown(false)}
-            >
-              <div className="py-1">
-                <Link
-                  to="/sponsor-child"
-                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 hover:text-blue-600"
-                  onClick={() => setShowDonateDropdown(false)}
-                >
-                  Sponsor a Child
+            <Link to="/statement-of-faith" className={`watoto-nav-item ${isActive('/statement-of-faith') ? 'active' : ''}`}>
+              STATEMENT OF FAITH
+            </Link>
+
+            {/* Ministries Dropdown */}
+            <div className="watoto-dropdown">
+              <div className={`watoto-nav-item ${isActive('/choir') || isActive('/pastors-network') || isActive('/church-planting') || isActive('/widows-elderly-care') || isActive('/childrens-church') ? 'active' : ''}`}>
+                MINISTRIES <FaChevronDown className="dropdown-arrow" />
+              </div>
+              <div className="watoto-dropdown-content">
+                <Link to="/choir" className={`watoto-dropdown-item ${isActive('/choir') ? 'active' : ''}`}>
+                  BERAKHAH CHOIR
                 </Link>
-                <Link
-                  to="/ministry-needs"
-                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 hover:text-blue-600"
-                  onClick={() => setShowDonateDropdown(false)}
-                >
-                  Ministry Needs
+                <Link to="/pastors-network" className={`watoto-dropdown-item ${isActive('/pastors-network') ? 'active' : ''}`}>
+                  PASTORS NETWORK
                 </Link>
-                <Link
-                  to="/donate"
-                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 hover:text-blue-600"
-                  onClick={() => setShowDonateDropdown(false)}
-                >
-                  All Giving Options
+                <Link to="/church-planting" className={`watoto-dropdown-item ${isActive('/church-planting') ? 'active' : ''}`}>
+                  CHURCH PLANTING
+                </Link>
+                <Link to="/widows-elderly-care" className={`watoto-dropdown-item ${isActive('/widows-elderly-care') ? 'active' : ''}`}>
+                  WIDOWS & ELDERLY CARE
+                </Link>
+                <Link to="/childrens-church" className={`watoto-dropdown-item ${isActive('/childrens-church') ? 'active' : ''}`}>
+                  CHILDREN'S CHURCH
                 </Link>
               </div>
             </div>
-          </div>
 
-          <Link to="/contact" className="text-black hover:text-blue-600 font-medium leaf-nav-item">Contact</Link>
+            <Link to="/partners" className={`watoto-nav-item ${isActive('/partners') ? 'active' : ''}`}>
+              PARTNERS
+            </Link>
+
+            <Link to="/stories-of-impact" className={`watoto-nav-item ${isActive('/stories-of-impact') ? 'active' : ''}`}>
+              STORIES OF IMPACT
+            </Link>
+
+            {/* Donate Dropdown */}
+            <div className="watoto-dropdown">
+              <div className={`watoto-nav-item ${isActive('/sponsor-child') || isActive('/ministry-needs') || isActive('/donate') ? 'active' : ''}`}>
+                DONATE <FaChevronDown className="dropdown-arrow" />
+              </div>
+              <div className="watoto-dropdown-content">
+                <Link to="/sponsor-child" className={`watoto-dropdown-item ${isActive('/sponsor-child') ? 'active' : ''}`}>
+                  SPONSOR A CHILD
+                </Link>
+                <Link to="/ministry-needs" className={`watoto-dropdown-item ${isActive('/ministry-needs') ? 'active' : ''}`}>
+                  MINISTRY NEEDS
+                </Link>
+                <Link to="/donate" className={`watoto-dropdown-item ${isActive('/donate') ? 'active' : ''}`}>
+                  ALL GIVING OPTIONS
+                </Link>
+              </div>
+            </div>
+
+            <Link to="/prayer-requests" className={`watoto-nav-item ${isActive('/prayer-requests') ? 'active' : ''}`}>
+              PRAYER
+            </Link>
+
+            <Link to="/teaching-series" className={`watoto-nav-item ${isActive('/teaching-series') ? 'active' : ''}`}>
+              TEACHING
+            </Link>
+
+            <Link to="/contact" className={`watoto-nav-item ${isActive('/contact') ? 'active' : ''}`}>
+              CONTACT
+            </Link>
+          </div>
         </nav>
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav className="md:hidden py-4 px-6 shadow-lg fixed top-[72px] left-0 w-full z-50 bg-white">
-          <div className="flex flex-col space-y-4 max-h-[80vh] overflow-y-auto">
-            <Link
-              to="/"
-              className="text-black hover:text-blue-600 font-medium py-2"
-              onClick={toggleMenu}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="text-black hover:text-blue-600 font-medium py-2"
-              onClick={toggleMenu}
-            >
-              About
-            </Link>
-            <Link
-              to="/statement-of-faith"
-              className="text-black hover:text-blue-600 font-medium py-2"
-              onClick={toggleMenu}
-            >
-              Statement of Faith
-            </Link>
-            <Link
-              to="/partners"
-              className="text-black hover:text-blue-600 font-medium py-2"
-              onClick={toggleMenu}
-            >
-              Partners
-            </Link>
-            <Link
-              to="/stories-of-impact"
-              className="text-black hover:text-blue-600 font-medium py-2"
-              onClick={toggleMenu}
-            >
-              Stories of Impact
-            </Link>
-            {/* Donate Section with Sub-items */}
-            <div className="py-2">
-              <div className="text-black font-medium mb-2">Donate</div>
-              <div className="pl-4 space-y-2">
-                <Link
-                  to="/sponsor-child"
-                  className="block text-black hover:text-blue-600"
-                  onClick={toggleMenu}
-                >
-                  Sponsor a Child
-                </Link>
-                <Link
-                  to="/ministry-needs"
-                  className="block text-black hover:text-blue-600"
-                  onClick={toggleMenu}
-                >
-                  Ministry Needs
-                </Link>
-                <Link
-                  to="/donate"
-                  className="block text-black hover:text-blue-600"
-                  onClick={toggleMenu}
-                >
-                  All Giving Options
-                </Link>
-              </div>
-            </div>
-            <Link
-              to="/contact"
-              className="text-black hover:text-blue-600 font-medium py-2"
-              onClick={toggleMenu}
-            >
-              Contact
-            </Link>
+      {mobileMenuOpen && (
+        <div className="watoto-mobile-menu">
+          <Link to="/" className={`watoto-mobile-nav-item ${isActive('/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            HOME
+          </Link>
 
-            {/* Social Media Icons in Mobile Menu */}
-            <div className="flex space-x-4 py-2">
-              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-green-500">
-                <FaWhatsapp />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-600">
-                <FaFacebook />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-pink-600">
-                <FaInstagram />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-400">
-                <FaTwitter />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-red-600">
-                <FaYoutube />
-              </a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-black">
-                <FaTiktok />
-              </a>
+          <Link to="/about" className={`watoto-mobile-nav-item ${isActive('/about') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            ABOUT
+          </Link>
+
+          <Link to="/statement-of-faith" className={`watoto-mobile-nav-item ${isActive('/statement-of-faith') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            STATEMENT OF FAITH
+          </Link>
+
+          {/* Ministries Dropdown */}
+          <div className="watoto-mobile-dropdown">
+            <div
+              className={`watoto-mobile-dropdown-header ${isActive('/choir') || isActive('/pastors-network') || isActive('/church-planting') || isActive('/widows-elderly-care') || isActive('/childrens-church') ? 'active' : ''}`}
+              onClick={() => toggleMobileDropdown('ministries')}
+            >
+              <span>MINISTRIES</span>
+              <FaChevronDown className={`${openDropdowns.ministries ? 'rotate-180' : ''}`} />
+            </div>
+            <div className={`watoto-mobile-dropdown-content ${openDropdowns.ministries ? 'open' : ''}`}>
+              <Link to="/choir" className={`watoto-mobile-nav-item ${isActive('/choir') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                BERAKHAH CHOIR
+              </Link>
+              <Link to="/pastors-network" className={`watoto-mobile-nav-item ${isActive('/pastors-network') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                PASTORS NETWORK
+              </Link>
+              <Link to="/church-planting" className={`watoto-mobile-nav-item ${isActive('/church-planting') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                CHURCH PLANTING
+              </Link>
+              <Link to="/widows-elderly-care" className={`watoto-mobile-nav-item ${isActive('/widows-elderly-care') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                WIDOWS & ELDERLY CARE
+              </Link>
+              <Link to="/childrens-church" className={`watoto-mobile-nav-item ${isActive('/childrens-church') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                CHILDREN'S CHURCH
+              </Link>
             </div>
           </div>
-        </nav>
+
+          <Link to="/partners" className={`watoto-mobile-nav-item ${isActive('/partners') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            PARTNERS
+          </Link>
+
+          <Link to="/stories-of-impact" className={`watoto-mobile-nav-item ${isActive('/stories-of-impact') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            STORIES OF IMPACT
+          </Link>
+
+          {/* Donate Dropdown */}
+          <div className="watoto-mobile-dropdown">
+            <div
+              className={`watoto-mobile-dropdown-header ${isActive('/sponsor-child') || isActive('/ministry-needs') || isActive('/donate') ? 'active' : ''}`}
+              onClick={() => toggleMobileDropdown('donate')}
+            >
+              <span>DONATE</span>
+              <FaChevronDown className={`${openDropdowns.donate ? 'rotate-180' : ''}`} />
+            </div>
+            <div className={`watoto-mobile-dropdown-content ${openDropdowns.donate ? 'open' : ''}`}>
+              <Link to="/sponsor-child" className={`watoto-mobile-nav-item ${isActive('/sponsor-child') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                SPONSOR A CHILD
+              </Link>
+              <Link to="/ministry-needs" className={`watoto-mobile-nav-item ${isActive('/ministry-needs') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                MINISTRY NEEDS
+              </Link>
+              <Link to="/donate" className={`watoto-mobile-nav-item ${isActive('/donate') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+                ALL GIVING OPTIONS
+              </Link>
+            </div>
+          </div>
+
+          <Link to="/prayer-requests" className={`watoto-mobile-nav-item ${isActive('/prayer-requests') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            PRAYER
+          </Link>
+
+          <Link to="/teaching-series" className={`watoto-mobile-nav-item ${isActive('/teaching-series') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            TEACHING
+          </Link>
+
+          <Link to="/contact" className={`watoto-mobile-nav-item ${isActive('/contact') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            CONTACT
+          </Link>
+        </div>
       )}
     </header>
   );

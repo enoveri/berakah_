@@ -1,0 +1,12 @@
+These thumbnails are for the Stories of Impact page.
+
+1. moreen.jpg - Thumbnail for Moreen's story
+2. loyce.jpg - Thumbnail for Loyce's story
+3. gerald.jpg - Thumbnail for Gerald's story
+
+You can download these thumbnails from YouTube using these URLs:
+- https://img.youtube.com/vi/PcO-Zjslp8s/0.jpg (Moreen)
+- https://img.youtube.com/vi/nkpv3ftETtI/0.jpg (Loyce)
+- https://img.youtube.com/vi/JfQXs28brnY/0.jpg (Gerald)
+
+Or use placeholder images if needed.

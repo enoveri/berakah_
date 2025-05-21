@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 // Create the context
 const AppContext = createContext();
@@ -62,11 +63,14 @@ export const AppProvider = ({ children }) => {
     setPrayerRequests([...prayerRequests, { id: Date.now(), ...request }]);
   };
 
+  // Get current location from react-router
+  const location = useLocation();
+
   // Close mobile menu when changing routes
   useEffect(() => {
     setIsMenuOpen(false);
     document.body.classList.remove('menu-open');
-  }, [window.location.pathname]);
+  }, [location.pathname]);
 
   // Apply dark mode to body if enabled
   useEffect(() => {

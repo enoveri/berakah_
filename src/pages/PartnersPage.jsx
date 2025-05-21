@@ -40,24 +40,31 @@ const PartnersPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Partner Hero Section */}
-      <div className="relative bg-blue-900 text-white">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="container mx-auto px-4 py-24 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">PARTNER WITH US</h1>
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">JOIN OUR MISSION. MAKE A DIFFERENCE.</h2>
-              <p className="text-xl mb-6">
-                We invite you to partner with International Great Faith Ministries as we work to spread the Gospel and provide humanitarian aid to communities in need.
-              </p>
-              <p className="text-xl mb-6">
-                Your partnership enables us to reach more people, support more communities, and make a greater impact for the Kingdom of God.
-              </p>
-              <p className="text-xl mb-6">
-                Together, we can transform lives, restore hope, and share the love of Christ with those who need it most.
-              </p>
-            </div>
+      {/* Partner Hero Section with Background Image */}
+      <div className="sponsor-hero-section">
+        <div
+          className="bg-image"
+          style={{ backgroundImage: "url('/photos/pastors-2.jpg')" }}
+        ></div>
+        <div className="overlay"></div>
+        <div className="content">
+          <div className="container mx-auto">
+            <h1>PARTNER WITH US</h1>
+            <h2>JOIN OUR MISSION. MAKE A DIFFERENCE.</h2>
+            <p>
+              Our Friends and Partners help us greatly to take the love of God and the Gospel
+              of our Lord Jesus Christ to many rural communities in Uganda and beyond. Your
+              prayers, support, and love uphold this ministry as we reach villages, schools,
+              prisons, and nations.
+            </p>
+            <p>
+              Your partnership provides the much-needed love, care, and hope for orphaned
+              and vulnerable children at Berakhah Childcare. As the needs continue to grow,
+              we're challenged to increase our outreach efforts in the communities we serve.
+            </p>
+            <a href="#/sponsor-child" className="cta-button">
+              SPONSOR A CHILD
+            </a>
           </div>
         </div>
       </div>
@@ -124,7 +131,7 @@ const PartnersPage = () => {
             </div>
 
             {/* Partner Form */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="rounded-xl shadow-md overflow-hidden glow-container" style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #5D4BA0 100%)' }}>
               <div className="p-8">
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-md">
@@ -138,10 +145,15 @@ const PartnersPage = () => {
                   </div>
                 )}
 
+                <div className="flex justify-center mb-6">
+                  <FaHandHoldingHeart className="text-6xl" style={{ color: '#FFAF60', filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))' }} />
+                </div>
+                <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: '#FFD8A8' }}>Partner With Us</h2>
+
                 <form onSubmit={submitForm}>
                   {/* Name Fields */}
                   <div className="mb-6">
-                    <label className="block text-gray-700 mb-2">Name <span className="text-red-500">*</span></label>
+                    <label className="block text-white font-medium mb-2">Name <span className="text-red-300">*</span></label>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <input
@@ -156,7 +168,7 @@ const PartnersPage = () => {
                           placeholder="First"
                         />
                         {errors.firstName && (
-                          <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                          <p className="text-red-300 text-sm mt-1">{errors.firstName}</p>
                         )}
                       </div>
                       <div>
@@ -172,7 +184,7 @@ const PartnersPage = () => {
                           placeholder="Last"
                         />
                         {errors.lastName && (
-                          <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                          <p className="text-red-300 text-sm mt-1">{errors.lastName}</p>
                         )}
                       </div>
                     </div>
@@ -180,7 +192,7 @@ const PartnersPage = () => {
 
                   {/* Email */}
                   <div className="mb-6">
-                    <label htmlFor="email" className="block text-gray-700 mb-2">Email <span className="text-red-500">*</span></label>
+                    <label htmlFor="email" className="block text-white font-medium mb-2">Email <span className="text-red-300">*</span></label>
                     <input
                       type="email"
                       id="email"
@@ -193,13 +205,13 @@ const PartnersPage = () => {
                       placeholder="Your email"
                     />
                     {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                      <p className="text-red-300 text-sm mt-1">{errors.email}</p>
                     )}
                   </div>
 
                   {/* Phone */}
                   <div className="mb-6">
-                    <label htmlFor="phone" className="block text-gray-700 mb-2">Phone</label>
+                    <label htmlFor="phone" className="block text-white font-medium mb-2">Phone</label>
                     <input
                       type="tel"
                       id="phone"
@@ -212,13 +224,13 @@ const PartnersPage = () => {
                       placeholder="Your phone number"
                     />
                     {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                      <p className="text-red-300 text-sm mt-1">{errors.phone}</p>
                     )}
                   </div>
 
                   {/* Address */}
                   <div className="mb-6">
-                    <label htmlFor="address" className="block text-gray-700 mb-2">Address</label>
+                    <label htmlFor="address" className="block text-white font-medium mb-2">Address</label>
                     <input
                       type="text"
                       id="address"
@@ -231,7 +243,7 @@ const PartnersPage = () => {
                   </div>
 
                   <div className="mb-6">
-                    <label htmlFor="addressLine1" className="block text-gray-700 mb-2">Address Line 1</label>
+                    <label htmlFor="addressLine1" className="block text-white font-medium mb-2">Address Line 1</label>
                     <input
                       type="text"
                       id="addressLine1"
@@ -244,7 +256,7 @@ const PartnersPage = () => {
                   </div>
 
                   <div className="mb-6">
-                    <label htmlFor="addressLine2" className="block text-gray-700 mb-2">Address Line 2</label>
+                    <label htmlFor="addressLine2" className="block text-white font-medium mb-2">Address Line 2</label>
                     <input
                       type="text"
                       id="addressLine2"
@@ -258,7 +270,7 @@ const PartnersPage = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label htmlFor="city" className="block text-gray-700 mb-2">City</label>
+                      <label htmlFor="city" className="block text-white font-medium mb-2">City</label>
                       <input
                         type="text"
                         id="city"
@@ -270,7 +282,7 @@ const PartnersPage = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="state" className="block text-gray-700 mb-2">State / Province / Region</label>
+                      <label htmlFor="state" className="block text-white font-medium mb-2">State / Province / Region</label>
                       <input
                         type="text"
                         id="state"
@@ -285,7 +297,7 @@ const PartnersPage = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label htmlFor="postalCode" className="block text-gray-700 mb-2">Postal Code</label>
+                      <label htmlFor="postalCode" className="block text-white font-medium mb-2">Postal Code</label>
                       <input
                         type="text"
                         id="postalCode"
@@ -297,7 +309,7 @@ const PartnersPage = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="country" className="block text-gray-700 mb-2">Country</label>
+                      <label htmlFor="country" className="block text-white font-medium mb-2">Country</label>
                       <select
                         id="country"
                         name="country"
@@ -320,7 +332,7 @@ const PartnersPage = () => {
 
                   {/* Message */}
                   <div className="mb-6">
-                    <label htmlFor="message" className="block text-gray-700 mb-2">Comment or Message</label>
+                    <label htmlFor="message" className="block text-white font-medium mb-2">Comment or Message</label>
                     <textarea
                       id="message"
                       name="message"
@@ -340,18 +352,20 @@ const PartnersPage = () => {
                         id="human"
                         className="mr-2"
                       />
-                      <label htmlFor="human" className="text-gray-700">I am human</label>
+                      <label htmlFor="human" className="text-white">I am human</label>
                     </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-blue-700 text-white py-4 rounded-md font-bold text-xl hover:bg-blue-800 transition-colors shadow-lg border-2 border-black disabled:bg-blue-400"
-                    style={{ color: 'white !important' }}
-                  >
-                    {isSubmitting ? 'Submitting...' : 'SUBMIT'}
-                  </button>
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="dreamy-button px-8 py-3 rounded-md font-bold transition-all"
+                      style={{ background: 'linear-gradient(135deg, #E67E22 0%, #B54708 100%)', color: '#FFF8E6' }}
+                    >
+                      {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>

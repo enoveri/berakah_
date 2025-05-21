@@ -1,0 +1,500 @@
+/*
+ * THEMES.CSS
+ * All theme-related styles (dark blue, dreamy colors, etc.)
+ */
+
+/* Dreamy Flower Theme - Based on the flower image */
+:root {
+  /* Primary colors from the flower image */
+  --dreamy-deep-blue: #0F1E4A;
+  --dreamy-navy: #1A2B5F;
+  --dreamy-purple: #6C4A8C;
+  --dreamy-light-purple: #9A7CB8;
+  --dreamy-teal: #4ECDC4;
+  --dreamy-light-blue: #7FCDFF;
+  --dreamy-cyan: #00D4FF;
+  --dreamy-orange: #FF9E5E;
+  --dreamy-gold: #FFB347;
+  --dreamy-cream: #FFF8E6;
+
+  /* Background gradients */
+  --gradient-deep: linear-gradient(135deg, var(--dreamy-deep-blue) 0%, var(--dreamy-navy) 100%);
+  --gradient-purple: linear-gradient(135deg, var(--dreamy-navy) 0%, var(--dreamy-purple) 100%);
+  --gradient-teal: linear-gradient(135deg, var(--dreamy-navy) 0%, var(--dreamy-teal) 100%);
+  --gradient-mixed: linear-gradient(135deg, var(--dreamy-navy) 0%, var(--dreamy-purple) 50%, var(--dreamy-deep-blue) 100%);
+
+  /* Container colors */
+  --container-blue: #3B82F6;
+  --container-purple: #8B5CF6;
+  --container-teal: #14B8A6;
+  --container-orange: #F59E0B;
+  --container-pink: #EC4899;
+  --container-green: #10B981;
+
+  /* Text colors */
+  --text-dark: #1A1A2E;
+  --text-light: #F0F4F8;
+}
+
+/* Main background for the entire site */
+.dreamy-bg {
+  background: var(--gradient-deep);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  min-height: 100vh;
+  color: var(--text-light);
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Container styles inspired by Berakhah ChildCare */
+.dreamy-container {
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dreamy-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dreamy-container-header {
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dreamy-container-body {
+  background-color: #93C5FD; /* Light blue background as requested */
+  padding: 1.5rem;
+  flex-grow: 1;
+  color: var(--text-dark);
+}
+
+.dreamy-container-blue .dreamy-container-header {
+  background-color: var(--container-blue);
+}
+
+.dreamy-container-purple .dreamy-container-header {
+  background-color: var(--container-purple);
+}
+
+.dreamy-container-teal .dreamy-container-header {
+  background-color: var(--container-teal);
+}
+
+.dreamy-container-orange .dreamy-container-header {
+  background-color: var(--container-orange);
+}
+
+.dreamy-container-pink .dreamy-container-header {
+  background-color: var(--container-pink);
+}
+
+.dreamy-container-green .dreamy-container-header {
+  background-color: var(--container-green);
+}
+
+/* Hover effect classes */
+.hover-swell {
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hover-swell:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.content-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== DREAMY COLORS THEME ===== */
+:root {
+  /* Dreamy colors */
+  --dreamy-blue-light: #7FCDFF;
+  --dreamy-blue-medium: #3B9AE1;
+  --dreamy-blue-dark: #1E3A8A;
+  --dreamy-purple-light: #B5A9FF;
+  --dreamy-purple-medium: #8A7AD8;
+  --dreamy-purple-dark: #5D4BA0;
+  --dreamy-teal-light: #7FECEF;
+  --dreamy-teal-medium: #4ECDC4;
+  --dreamy-teal-dark: #2A9D8F;
+  --dreamy-orange-light: #FFD8A8;
+  --dreamy-orange-medium: #FFAF60;
+  --dreamy-orange-dark: #E67E22;
+  --dreamy-cream: #FFF8E6;
+  --dreamy-black: #1A1A2E;
+
+  /* Dark blue theme */
+  --dark-blue-primary: #0A1128;
+  --dark-blue-secondary: #1C2541;
+  --dark-blue-tertiary: #3A506B;
+  --dark-blue-accent: #5BC0BE;
+  --dark-blue-highlight: #6FFFE9;
+  --dark-blue-text-light: #F0F4F8;
+  --dark-blue-text-cream: #FFF8E6;
+  --dark-blue-orange: #E67E22;
+  --dark-blue-orange-dark: #B54708;
+}
+
+/* Dreamy Containers */
+.glow-container {
+  background: linear-gradient(135deg, var(--dreamy-blue-dark) 0%, var(--dreamy-purple-dark) 100%);
+  color: var(--dreamy-cream);
+}
+
+.glow-container:hover {
+  box-shadow: 0 0 20px rgba(127, 205, 255, 0.7);
+  transform: translateY(-5px);
+}
+
+@keyframes dreamy-pulse-glow {
+  0% {
+    box-shadow: 0 0 15px rgba(127, 205, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(181, 169, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(127, 205, 255, 0.7);
+  }
+}
+
+.glow-container.animate:hover {
+  animation: dreamy-pulse-glow 2s infinite;
+}
+
+/* Donate containers */
+.donate-container {
+  background: linear-gradient(135deg, var(--dreamy-blue-dark) 0%, var(--dreamy-purple-dark) 100%);
+  color: var(--dreamy-cream);
+}
+
+.donate-container:hover {
+  box-shadow: 0 0 25px rgba(127, 205, 255, 0.9);
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Text styling for containers */
+.donate-container h3,
+.donate-container p,
+.donate-container div,
+.donate-container li,
+.donate-container span,
+.glow-container h3,
+.glow-container p,
+.glow-container div,
+.glow-container li,
+.glow-container span {
+  color: var(--dreamy-cream) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+
+/* Make icons visible with high contrast */
+.donate-container svg,
+.donate-container .icon-container svg,
+.glow-container svg,
+.glow-container .icon-container svg {
+  color: var(--dreamy-orange-medium) !important;
+  fill: var(--dreamy-orange-medium) !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  font-size: 2.5rem !important;
+}
+
+/* Make headings stand out */
+.donate-container h3,
+.glow-container h3 {
+  color: var(--dreamy-orange-light) !important;
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Variant containers with different gradients */
+.donate-container.variant-1,
+.glow-container.variant-1 {
+  background: linear-gradient(135deg, var(--dreamy-blue-dark) 0%, var(--dreamy-teal-dark) 100%);
+}
+
+.donate-container.variant-2,
+.glow-container.variant-2 {
+  background: linear-gradient(135deg, var(--dreamy-purple-dark) 0%, var(--dreamy-blue-dark) 100%);
+}
+
+.donate-container.variant-3,
+.glow-container.variant-3 {
+  background: linear-gradient(135deg, var(--dreamy-teal-dark) 0%, var(--dreamy-blue-dark) 100%);
+}
+
+.donate-container.variant-4,
+.glow-container.variant-4 {
+  background: linear-gradient(135deg, var(--dreamy-purple-dark) 0%, var(--dreamy-blue-dark) 100%);
+}
+
+/* Prayer, Teaching and Contact page specific styles */
+.prayer-container {
+  background: linear-gradient(135deg, var(--dreamy-blue-dark) 0%, var(--dreamy-purple-dark) 100%);
+}
+
+.teaching-container {
+  background: linear-gradient(135deg, var(--dreamy-purple-dark) 0%, var(--dreamy-blue-dark) 100%);
+}
+
+.contact-container {
+  background: linear-gradient(135deg, var(--dreamy-teal-dark) 0%, var(--dreamy-blue-dark) 100%);
+}
+
+/* White background containers with dark text */
+.white-container {
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.white-container h3,
+.white-container p,
+.white-container div,
+.white-container li,
+.white-container span {
+  color: var(--dreamy-black) !important;
+  text-shadow: none;
+}
+
+/* Dreamy buttons */
+.dreamy-button {
+  background: linear-gradient(135deg, var(--dreamy-blue-dark) 0%, var(--dreamy-purple-dark) 100%);
+  color: var(--dreamy-cream) !important;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dreamy-button:hover {
+  background: linear-gradient(135deg, var(--dreamy-purple-dark) 0%, var(--dreamy-blue-dark) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== DARK BLUE THEME ===== */
+
+/* Main background for all ministry pages */
+.dark-blue-bg {
+  background-color: var(--dark-blue-primary);
+  background-image: linear-gradient(to bottom, var(--dark-blue-primary), var(--dark-blue-secondary));
+  color: var(--dark-blue-text-light);
+  min-height: 100vh;
+}
+
+/* Section backgrounds */
+.dark-blue-section {
+  background-color: var(--dark-blue-secondary);
+  color: var(--dark-blue-text-light);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Container styles */
+.dark-blue-container {
+  background-color: var(--dark-blue-tertiary);
+  color: var(--dark-blue-text-light);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styles */
+.dark-blue-heading {
+  color: var(--dark-blue-accent);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.dark-blue-subheading {
+  color: var(--dark-blue-highlight);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Text styles */
+.dark-blue-text {
+  color: var(--dark-blue-text-light);
+}
+
+.dark-blue-text-accent {
+  color: var(--dark-blue-accent);
+}
+
+.dark-blue-text-highlight {
+  color: var(--dark-blue-highlight);
+}
+
+.dark-blue-text-light {
+  color: var(--dark-blue-text-light);
+}
+
+/* Button styles */
+.dark-blue-button {
+  background: linear-gradient(135deg, var(--dark-blue-accent) 0%, var(--dark-blue-tertiary) 100%);
+  color: var(--dark-blue-text-light) !important;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark-blue-button:hover {
+  background: linear-gradient(135deg, var(--dark-blue-highlight) 0%, var(--dark-blue-accent) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-blue-button-orange {
+  background: linear-gradient(135deg, var(--dark-blue-orange) 0%, var(--dark-blue-orange-dark) 100%);
+  color: var(--dark-blue-text-cream) !important;
+}
+
+.dark-blue-button-orange:hover {
+  background: linear-gradient(135deg, #F39C12 0%, var(--dark-blue-orange) 100%);
+}
+
+/* Card styles */
+.dark-blue-card {
+  background-color: var(--dark-blue-secondary);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dark-blue-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Form styles */
+.dark-blue-form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--dark-blue-tertiary);
+  color: var(--dark-blue-text-light);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.dark-blue-form-control:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--dark-blue-accent);
+  box-shadow: 0 0 0 3px rgba(91, 192, 190, 0.3);
+  outline: none;
+}
+
+.dark-blue-form-control::placeholder {
+  color: rgba(240, 244, 248, 0.6);
+}
+
+/* Icon styles */
+.dark-blue-icon {
+  color: var(--dark-blue-accent);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.dark-blue-icon-highlight {
+  color: var(--dark-blue-highlight);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Overlay for background images */
+.dark-blue-overlay {
+  background-color: rgba(10, 17, 40, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Content on top of overlay */
+.dark-blue-overlay-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Container colors based on the dashboard image */
+.container-green,
+.container-purple,
+.container-blue,
+.container-orange {
+  background-color: #A6CFFF;
+  color: black;
+}
+
+/* Partner box - the specific blue from the image */
+.partner-box {
+  background-color: #3B9AE1;
+  color: white;
+}
+
+/* Hover effects */
+.container-green:hover,
+.container-purple:hover,
+.container-blue:hover,
+.container-orange:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Choir title styles */
+.choir-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #FFD8A8 0%, #FFAF60 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 768px) {
+  .choir-title {
+    font-size: 2rem;
+  }
+}

@@ -2,10 +2,11 @@ import React from 'react';
 import Hero from '../components/home/Hero';
 import PrayerSection from '../components/home/PrayerSection';
 import FeaturedEvents from '../components/home/FeaturedEvents';
+import '../styles/themes.css';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="dreamy-bg">
       <Hero />
       <PrayerSection />
       <FeaturedEvents />

@@ -2,39 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/photos/Gidudu.org_logo.png" />
+    <base href="/" />
+    <link rel="icon" type="image/png" href="./photos/Gidudu.org_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>International great faith ministries</title>
+    <title>International Great Faith Ministries</title>
+    <meta name="description" content="International Great Faith Ministries brings the love of God and the gospel of our Lord and savior Jesus Christ by serving people's spiritual and physical needs." />
+    <script src="./route-handler.js"></script>
     <style>
-      html, body, #root, main, section, div:not(footer div) {
+      html, body, #root, main, section, div {
         margin: 0;
         padding: 0;
-        background-color: #EBF4FF;
+      }
+
+      /* Initial loading state - will be overridden by CSS */
+      body {
+        background: linear-gradient(135deg, #0F1E4A 0%, #1A2B5F 50%, #6C4A8C 100%);
+        color: #F9FAFB;
       }
 
       footer {
-        background-color: #000000 !important;
+        background-color: rgba(15, 30, 74, 0.9) !important;
       }
 
       footer div {
-        background-color: #000000 !important;
-      }
-
-      /* Global text color */
-      body, p, h1, h2, h3, h4, h5, h6, span, div, li, a:not(.btn) {
-        color: #1E3A8A;
-      }
-
-      /* Exception for white text on colored backgrounds */
-      .bg-blue-600 *, .bg-blue-700 *, .bg-blue-800 *, .bg-blue-900 *,
-      .container-blue *, .bg-black *,
-      footer * {
-        color: #FFFFFF;
+        background-color: transparent !important;
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Handle direct navigation to routes
+      (function() {
+        // Only run this script if we're not using hash routing already
+        if (!window.location.hash && window.location.pathname !== '/') {
+          var path = window.location.pathname;
+          var cleanPath = path.replace(/^\/+|\/+$/g, ''); // Remove leading/trailing slashes
+
+          if (cleanPath) {
+            // Redirect to the hash route
+            window.location.replace(window.location.origin + '/#/' + cleanPath);
+          }
+        }
+      })();
+    </script>
+    <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>

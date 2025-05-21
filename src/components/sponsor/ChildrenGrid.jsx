@@ -547,7 +547,7 @@ const ChildrenGrid = () => {
   return (
     <>
       {/* Display counter showing how many children are displayed out of total */}
-      <div className="mb-4 text-right text-gray-600">
+      <div className="mb-4 text-right font-bold text-blue-800 text-lg">
         Showing {visibleChildren.length} of {children.length} children
       </div>
 
@@ -556,18 +556,19 @@ const ChildrenGrid = () => {
           <div
             key={index}
             id={`child-${index}`}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 animate-fade-in border border-gray-200"
+            className="bg-blue-100 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 animate-fade-in border-2 border-blue-300"
             style={{ animationDelay: `${(index % 20) * 50}ms` }}
           >
             <div className="p-4 text-center">
               <div className="h-16 flex items-center justify-center">
-                <h3 className="text-lg font-semibold text-gray-800">{child}</h3>
+                <h3 className="text-xl font-bold text-blue-800 px-2 py-1 rounded">{child}</h3>
               </div>
               <Link
                 to={`/sponsor-child/${encodeURIComponent(child)}`}
-                className="mt-4 inline-block w-full px-4 py-3 bg-blue-600 text-white rounded-md font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
+                className="mt-4 inline-block w-full px-4 py-3 bg-sky-500 text-white rounded-md font-bold text-lg hover:bg-sky-600 transition-colors shadow-lg"
+                style={{ color: 'white !important' }}
               >
-                Sponsor
+                SPONSOR
               </Link>
             </div>
           </div>
@@ -580,7 +581,8 @@ const ChildrenGrid = () => {
           <button
             onClick={handleLoadMore}
             disabled={isLoading}
-            className={`px-8 py-4 ${isLoading ? 'bg-blue-700' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-md font-semibold text-lg transition-colors shadow-md`}
+            className={`px-8 py-4 ${isLoading ? 'bg-sky-600' : 'bg-sky-500 hover:bg-sky-600'} text-white rounded-md font-bold text-lg transition-colors shadow-lg`}
+            style={{ color: 'white !important' }}
           >
             {isLoading ? (
               <span className="flex items-center justify-center">
@@ -599,7 +601,8 @@ const ChildrenGrid = () => {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-50 border border-blue-400"
+          className="fixed bottom-8 right-8 bg-sky-500 text-white p-3 rounded-full shadow-lg hover:bg-sky-600 transition-colors z-50"
+          style={{ color: 'white !important', boxShadow: '0 4px 8px rgba(0,0,0,0.3)' }}
           aria-label="Back to top"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -6,13 +6,13 @@ const ConnectSection = () => {
     {
       id: 1,
       title: 'SPONSOR',
-      link: '/sponsor',
+      link: '/sponsor-child',
       bgColor: 'bg-blue-600'
     },
     {
       id: 2,
-      title: 'CELL GUIDE',
-      link: '/cell-guide',
+      title: 'PRAYER',
+      link: '/prayer-requests',
       bgColor: 'bg-green-600'
     },
     {
@@ -23,8 +23,8 @@ const ConnectSection = () => {
     },
     {
       id: 4,
-      title: 'GENEROSITY',
-      link: '/give',
+      title: 'DONATE',
+      link: '/donate',
       bgColor: 'bg-yellow-600'
     },
     {
@@ -36,7 +36,8 @@ const ConnectSection = () => {
     {
       id: 6,
       title: 'TESTIMONY',
-      link: '/testimony',
+      link: '/prayer-requests',
+      onClick: () => localStorage.setItem('activeTab', 'testimony'),
       bgColor: 'bg-indigo-600'
     }
   ];
@@ -44,38 +45,38 @@ const ConnectSection = () => {
   const getInvolvedLinks = [
     {
       id: 1,
-      title: 'JOIN THE TEAM',
-      link: '/serve',
+      title: 'CHOIR',
+      link: '/choir',
       bgColor: 'bg-teal-600'
     },
     {
       id: 2,
-      title: 'EQUIP STREAMS',
-      link: '/equip',
+      title: 'PASTORS NETWORK',
+      link: '/pastors-network',
       bgColor: 'bg-amber-600'
     },
     {
       id: 3,
-      title: 'BERAKAH MUSIC',
-      link: '/music',
+      title: 'CHURCH PLANTING',
+      link: '/church-planting',
       bgColor: 'bg-pink-600'
     },
     {
       id: 4,
-      title: 'NOW WHAT?',
-      link: '/now-what',
+      title: 'TEACHING SERIES',
+      link: '/teaching-series',
       bgColor: 'bg-sky-600'
     },
     {
       id: 5,
-      title: 'MEDIA',
-      link: '/media',
+      title: 'WIDOWS & ELDERLY',
+      link: '/widows-elderly-care',
       bgColor: 'bg-emerald-600'
     },
     {
       id: 6,
-      title: 'PRAYER REQUEST',
-      link: '/prayer',
+      title: 'CHILDREN\'S CHURCH',
+      link: '/childrens-church',
       bgColor: 'bg-violet-600'
     }
   ];
@@ -96,6 +97,7 @@ const ConnectSection = () => {
               <Link
                 key={item.id}
                 to={item.link}
+                onClick={item.onClick}
                 className={`content-box ${item.bgColor} text-white py-5 px-3 rounded-lg text-center font-medium`}
               >
                 <span className="hover-swell inline-block">{item.title}</span>

@@ -1,21 +1,38 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import './styles/custom.css'
-import './styles/container-colors.css'
-import './styles/fix-blue-background.css'
-import './styles/text-colors.css'
-import './styles/church-theme.css'
-import './styles/mobile-menu-fix.css'
-import './styles/icon-fix.css'
-import './styles/glow-effect.css'
+import './styles/base.css'
+import './styles/components.css'
+import './styles/themes.css'
+import './styles/containers.css'
 import App from './App.jsx'
 import { AppProvider } from './context/AppContext.jsx'
+import { HashRouter } from 'react-router-dom'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
-  </StrictMode>,
-)
+// Function to initialize the app
+function initApp() {
+  const rootElement = document.getElementById('root');
+
+  if (!rootElement) {
+    console.error('Root element not found!');
+    return;
+  }
+
+  try {
+    createRoot(rootElement).render(
+      <StrictMode>
+        <HashRouter>
+          <AppProvider>
+            <App />
+          </AppProvider>
+        </HashRouter>
+      </StrictMode>
+    );
+    console.log('App initialized successfully');
+  } catch (error) {
+    console.error('Error initializing app:', error);
+  }
+}
+
+// Initialize the app
+initApp();

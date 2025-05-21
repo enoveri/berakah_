@@ -1,0 +1,251 @@
+/*
+ * BASE.CSS
+ * Core styles, typography, and layout
+ */
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables */
+:root {
+  /* Blue theme colors */
+  --blue-dark: #1E40AF;
+  --blue-medium: #3B82F6;
+  --blue-light: #93C5FD;
+  --blue-accent: #2563EB;
+
+  /* Text colors */
+  --text-dark: #1A1A2E;
+  --text-medium: #333333;
+  --text-light: #F9FAFB;
+
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-off: #F3F4F6;
+
+  /* Border colors */
+  --border-color: #E5E7EB;
+
+  /* Dreamy theme colors from flower image */
+  --dreamy-deep-blue: #0F1E4A;
+  --dreamy-navy: #1A2B5F;
+  --dreamy-purple: #6C4A8C;
+  --dreamy-light-purple: #9A7CB8;
+  --dreamy-teal: #4ECDC4;
+  --dreamy-light-blue: #7FCDFF;
+  --dreamy-cyan: #00D4FF;
+  --dreamy-orange: #FF9E5E;
+  --dreamy-gold: #FFB347;
+  --dreamy-cream: #FFF8E6;
+}
+
+/* Base styles */
+body, html, #root {
+  background: linear-gradient(135deg, var(--dreamy-deep-blue) 0%, var(--dreamy-navy) 50%, var(--dreamy-purple) 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  color: var(--text-light);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--blue-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--blue-dark);
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+/* Header and Footer */
+header {
+  background-color: rgba(15, 30, 74, 0.9); /* Semi-transparent deep blue */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+footer {
+  background-color: rgba(15, 30, 74, 0.9); /* Semi-transparent deep blue */
+  color: var(--text-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Sticky Header */
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.header-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.header-shrink {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.header-shrink .logo {
+  transform: scale(0.9);
+}
+
+/* SVG and Icon fixes */
+svg {
+  fill: currentColor;
+  stroke: currentColor;
+  display: inline-block;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .mobile-menu {
+    top: 60px;
+  }
+}
+
+/* Background image handling */
+div[style*="backgroundImage"],
+div[style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Video and Media Display Fixes */
+iframe,
+video,
+.embed-youtube,
+.embed-responsive {
+  display: block !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  line-height: normal !important;
+  white-space: normal !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.video-container {
+  position: relative !important;
+  overflow: hidden !important;
+  max-width: 100% !important;
+  padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+  height: 0 !important;
+}
+
+.video-container iframe,
+.video-container video {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+

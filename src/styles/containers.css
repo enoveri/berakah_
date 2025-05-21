@@ -1,0 +1,127 @@
+/* 
+ * CONTAINERS.CSS
+ * Styles for content containers based on Berakhah ChildCare design
+ */
+
+/* Main container grid layout */
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Card container styles based on Berakhah ChildCare */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card header with colored background */
+.card-header {
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* Card body with light blue background */
+.card-body {
+  background-color: #93C5FD; /* Light blue background as requested */
+  padding: 1.5rem;
+  flex-grow: 1;
+  color: var(--text-dark);
+}
+
+/* Card color variations */
+.card-orange .card-header {
+  background-color: var(--dreamy-orange);
+}
+
+.card-blue .card-header {
+  background-color: var(--container-blue);
+}
+
+.card-purple .card-header {
+  background-color: var(--dreamy-purple);
+}
+
+.card-teal .card-header {
+  background-color: var(--dreamy-teal);
+}
+
+.card-pink .card-header {
+  background-color: var(--container-pink);
+}
+
+.card-green .card-header {
+  background-color: var(--container-green);
+}
+
+/* Card content styling */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.card-text {
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* Card icon/image styling */
+.card-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+/* Learn more link styling */
+.learn-more {
+  display: inline-flex;
+  align-items: center;
+  color: var(--dreamy-deep-blue);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+  color: var(--dreamy-purple);
+}
+
+.learn-more svg {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover svg {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+}

@@ -49,16 +49,16 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16 leaf-bg">
+    <div className="min-h-screen py-16 leaf-bg" style={{ backgroundColor: '#A6CFFF' }}>
       <div className="leaf-decoration leaf-top-left"></div>
       <div className="leaf-decoration leaf-top-right"></div>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center leaf-accent">About Us</h1>
+          <h1 className="text-4xl font-bold text-blue-900 mb-8 text-center leaf-accent">About Us</h1>
 
           {/* Vision and Mission Section */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
-            <div className="h-64 bg-blue-200 overflow-hidden">
+          <div className="rounded-xl shadow-md overflow-hidden mb-12 bg-[#EBF4FF] border border-blue-300 glow-blue">
+            <div className="h-64 overflow-hidden">
               <img
                 src="/photos/pastors-2.jpg"
                 alt="Pastors Network"
@@ -66,26 +66,26 @@ const AboutPage = () => {
               />
             </div>
             <div className="p-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Vision</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-2xl font-semibold text-blue-900 mb-4 leaf-accent">Our Vision</h2>
+              <p className="text-blue-800 mb-6">
                 We are an English-speaking, cell-based community church, celebrating Christ,
                 growing and multiplying as each one reaches one; touching those around us with the
                 love of Jesus, bringing healing to the cities and the nations.
               </p>
 
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Mission</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-2xl font-semibold text-blue-900 mb-4 leaf-accent">Our Mission</h2>
+              <p className="text-blue-800 mb-6">
                 To be a loving family sharing Christ with the world, by:
               </p>
-              <ul className="leaf-list pl-6 text-gray-600 mb-6 space-y-2">
+              <ul className="leaf-list pl-6 text-blue-800 mb-6 space-y-2">
                 <li>Expressing God's love through worship and service</li>
                 <li>Experiencing transformation through discipleship</li>
                 <li>Expanding God's Kingdom through evangelism</li>
                 <li>Extending compassion through community development and social justice initiatives</li>
               </ul>
 
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4 leaf-accent">Our Values</h2>
-              <ul className="leaf-list pl-6 text-gray-600 space-y-2">
+              <h2 className="text-2xl font-semibold text-blue-900 mb-4 leaf-accent">Our Values</h2>
+              <ul className="leaf-list pl-6 text-blue-800 space-y-2">
                 <li><strong>Bible-based teaching:</strong> We are committed to the Word of God as our foundation and guide.</li>
                 <li><strong>Cell-based community:</strong> We believe in close-knit family units where discipleship happens.</li>
                 <li><strong>Passionate worship:</strong> We express our love for God through vibrant, authentic worship.</li>
@@ -97,21 +97,22 @@ const AboutPage = () => {
           </div>
 
           {/* Ministry Sections */}
-          <h2 className="text-3xl font-bold text-blue-600 mb-8 text-center leaf-accent">Our Ministries</h2>
+          <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center leaf-accent">Our Ministries</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {ministrySections.map((section) => (
               <div
                 key={section.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl leaf-card ministry-container"
+                className="rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl leaf-card ministry-container bg-blue-200 border border-blue-300 glow-blue"
               >
                 <div className="p-6 flex-grow flex flex-col">
-                  <h2 className="text-2xl font-bold text-blue-600 mb-4 leaf-accent">{section.title}</h2>
-                  <div className="text-gray-700 whitespace-pre-line ministry-content">
+                  <h2 className="text-2xl font-bold text-blue-900 mb-4 leaf-accent">{section.title}</h2>
+                  <div className="text-blue-800 whitespace-pre-line ministry-content">
                     {section.description}
                   </div>
                   <Link
                     to={section.link}
-                    className="ministry-button"
+                    className="inline-block px-6 py-3 rounded-md font-medium transition-colors mt-4"
+                    style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%)', color: 'white' }}
                   >
                     MORE
                   </Link>

@@ -324,27 +324,27 @@ const MinistryNeedsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white py-16 ministry-needs-page">
+    <div className="dark-blue-bg py-16 ministry-needs-page">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-black mb-2 text-center">Ministry Needs</h1>
-          <p className="text-xl text-gray-800 mb-12 text-center">
+          <h1 className="text-4xl font-bold dark-blue-text-light mb-2 text-center">Ministry Needs</h1>
+          <p className="text-xl dark-blue-text-light mb-12 text-center">
             Support our work and help us make a difference
           </p>
 
           {/* Introduction */}
-          <div className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden mb-12">
+          <div className="dark-blue-section mb-12">
             <div className="p-8">
               <div className="flex justify-center mb-6">
-                <FaHandHoldingHeart className="text-black" style={{ fontSize: '4rem', fill: 'black' }} />
+                <FaHandHoldingHeart className="dark-blue-icon-highlight" style={{ fontSize: '4rem' }} />
               </div>
-              <h2 className="text-2xl font-bold text-black mb-4 text-center">Current Ministry Needs</h2>
-              <p className="text-black mb-6">
+              <h2 className="text-2xl font-bold dark-blue-heading mb-4 text-center">Current Ministry Needs</h2>
+              <p className="dark-blue-text mb-6">
                 International Great Faith Ministries has several ongoing projects and initiatives that need your support.
                 Your generous donations help us continue our work in spreading the Gospel, providing humanitarian aid,
                 and caring for orphaned and vulnerable children.
               </p>
-              <p className="text-black">
+              <p className="dark-blue-text">
                 Below are some of our current needs. You can choose to support any of these specific areas or make a
                 general donation that will be allocated where it's needed most.
               </p>
@@ -355,55 +355,55 @@ const MinistryNeedsPage = () => {
           <div className="flex flex-wrap justify-center mb-8">
             <button
               onClick={() => setActiveTab('priority')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
+              className={`dark-blue-button mx-2 mb-2 ${
                 activeTab === 'priority'
-                  ? 'bg-[#00308F] text-white'
-                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
+                  ? 'dark-blue-button-orange'
+                  : ''
               }`}
             >
-              <span className="text-white">HIGH PRIORITY NEEDS</span>
+              HIGH PRIORITY NEEDS
             </button>
             <button
               onClick={() => setActiveTab('monthly')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
+              className={`dark-blue-button mx-2 mb-2 ${
                 activeTab === 'monthly'
-                  ? 'bg-[#00308F] text-white'
-                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
+                  ? 'dark-blue-button-orange'
+                  : ''
               }`}
             >
-              <span className="text-white">MONTHLY ONGOING NEEDS</span>
+              MONTHLY ONGOING NEEDS
             </button>
             <button
               onClick={() => setActiveTab('toys')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
+              className={`dark-blue-button mx-2 mb-2 ${
                 activeTab === 'toys'
-                  ? 'bg-[#00308F] text-white'
-                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
+                  ? 'dark-blue-button-orange'
+                  : ''
               }`}
             >
-              <span className="text-white">CHILDREN'S TOYS</span>
+              CHILDREN'S TOYS
             </button>
             <button
               onClick={() => setActiveTab('women')}
-              className={`px-6 py-3 mx-2 mb-2 rounded-md font-bold transition-colors ${
+              className={`dark-blue-button mx-2 mb-2 ${
                 activeTab === 'women'
-                  ? 'bg-[#00308F] text-white'
-                  : 'bg-[#3B5998] text-white hover:bg-[#1E3A8A]'
+                  ? 'dark-blue-button-orange'
+                  : ''
               }`}
             >
-              <span className="text-white">WOMEN'S MINISTRY</span>
+              WOMEN'S MINISTRY
             </button>
           </div>
 
           {/* Category Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-black">
+            <h2 className="text-3xl font-bold dark-blue-heading">
               {activeTab === 'priority' && 'High Priority Needs'}
               {activeTab === 'monthly' && 'Monthly Ongoing Needs'}
               {activeTab === 'toys' && 'Children\'s Toys'}
               {activeTab === 'women' && 'Women\'s Ministry Needs'}
             </h2>
-            <p className="text-gray-800 mt-2 text-lg">
+            <p className="dark-blue-text-light mt-2 text-lg">
               {activeTab === 'priority' && 'These are our most urgent needs to continue and expand our ministry work.'}
               {activeTab === 'monthly' && 'These ongoing needs help sustain our daily ministry operations.'}
               {activeTab === 'toys' && 'Help bring joy to children through educational and recreational toys.'}
@@ -416,15 +416,15 @@ const MinistryNeedsPage = () => {
             {getActiveNeeds().map((need) => (
               <div
                 key={need.id}
-                className="container-blue rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow transform transition-all duration-300 hover:scale-105 group"
+                className="dark-blue-card p-6 transform transition-all duration-300 hover:scale-105 group"
               >
                 <div className="mb-4 flex justify-center transform transition-transform duration-300 group-hover:scale-110 icon-container">
-                  <div className="text-black" style={{ fontSize: '2.5rem', color: 'black', fill: 'black' }}>
-                    {cloneElement(need.icon, { className: 'text-black', style: { color: 'black', fill: 'black' } })}
+                  <div className="dark-blue-icon-highlight" style={{ fontSize: '2.5rem' }}>
+                    {cloneElement(need.icon, { className: 'dark-blue-icon-highlight' })}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-center transform transition-all duration-300 group-hover:scale-110">{need.title}</h3>
-                <p className="mb-4 text-center transition-all duration-300">
+                <h3 className="text-xl font-bold mb-2 text-center dark-blue-heading transform transition-all duration-300 group-hover:scale-110">{need.title}</h3>
+                <p className="mb-4 text-center dark-blue-text transition-all duration-300">
                   {need.description}
                 </p>
                 <div className="bg-white p-3 rounded-md mb-4 transition-all duration-300 group-hover:bg-gray-100 border border-gray-200">
@@ -433,18 +433,18 @@ const MinistryNeedsPage = () => {
                 </div>
                 <a
                   href="#donate-form"
-                  className="block w-full text-center px-4 py-2 bg-[#00308F] text-white rounded-md font-bold hover:bg-[#1E3A8A] transition-all duration-300 hover:scale-105 transform border-2 border-[#00308F]"
+                  className="dark-blue-button dark-blue-button-orange block w-full text-center px-4 py-2 rounded-md font-bold transition-all duration-300 hover:scale-105 transform"
                 >
-                  <span className="text-white">SUPPORT THIS NEED</span>
+                  SUPPORT THIS NEED
                 </a>
               </div>
             ))}
           </div>
 
           {/* Donation Form */}
-          <div id="donate-form" className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden mb-12">
+          <div id="donate-form" className="dark-blue-section mb-12">
             <div className="p-8">
-              <h2 className="text-2xl font-bold text-black mb-6 text-center">Make a Donation</h2>
+              <h2 className="text-2xl font-bold dark-blue-heading mb-6 text-center">Make a Donation</h2>
 
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-md">
@@ -461,15 +461,15 @@ const MinistryNeedsPage = () => {
               <form onSubmit={submitForm}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label htmlFor="firstName" className="block text-gray-700 mb-1">First Name <span className="text-red-500">*</span></label>
+                    <label htmlFor="firstName" className="block dark-blue-text-light mb-1">First Name <span className="text-red-500">*</span></label>
                     <input
                       type="text"
                       id="firstName"
                       name="firstName"
                       value={values.firstName}
                       onChange={handleChange}
-                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        errors.firstName ? 'border-red-500' : 'border-gray-300'
+                      className={`dark-blue-form-control w-full px-4 py-2 rounded-md ${
+                        errors.firstName ? 'border-red-500' : ''
                       }`}
                     />
                     {errors.firstName && (
@@ -477,15 +477,15 @@ const MinistryNeedsPage = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-gray-700 mb-1">Last Name <span className="text-red-500">*</span></label>
+                    <label htmlFor="lastName" className="block dark-blue-text-light mb-1">Last Name <span className="text-red-500">*</span></label>
                     <input
                       type="text"
                       id="lastName"
                       name="lastName"
                       value={values.lastName}
                       onChange={handleChange}
-                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        errors.lastName ? 'border-red-500' : 'border-gray-300'
+                      className={`dark-blue-form-control w-full px-4 py-2 rounded-md ${
+                        errors.lastName ? 'border-red-500' : ''
                       }`}
                     />
                     {errors.lastName && (
@@ -496,15 +496,15 @@ const MinistryNeedsPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label htmlFor="email" className="block text-gray-700 mb-1">Email <span className="text-red-500">*</span></label>
+                    <label htmlFor="email" className="block dark-blue-text-light mb-1">Email <span className="text-red-500">*</span></label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={values.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      className={`dark-blue-form-control w-full px-4 py-2 rounded-md ${
+                        errors.email ? 'border-red-500' : ''
                       }`}
                     />
                     {errors.email && (
@@ -512,20 +512,20 @@ const MinistryNeedsPage = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-gray-700 mb-1">Phone</label>
+                    <label htmlFor="phone" className="block dark-blue-text-light mb-1">Phone</label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={values.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="dark-blue-form-control w-full px-4 py-2 rounded-md"
                     />
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="donationAmount" className="block text-gray-700 mb-1">Donation Amount <span className="text-red-500">*</span></label>
+                  <label htmlFor="donationAmount" className="block dark-blue-text-light mb-1">Donation Amount <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     id="donationAmount"
@@ -533,8 +533,8 @@ const MinistryNeedsPage = () => {
                     value={values.donationAmount}
                     onChange={handleChange}
                     placeholder="e.g., $50"
-                    className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      errors.donationAmount ? 'border-red-500' : 'border-gray-300'
+                    className={`dark-blue-form-control w-full px-4 py-2 rounded-md ${
+                      errors.donationAmount ? 'border-red-500' : ''
                     }`}
                   />
                   {errors.donationAmount && (
@@ -543,13 +543,13 @@ const MinistryNeedsPage = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="donationPurpose" className="block text-gray-700 mb-1">Purpose of Donation</label>
+                  <label htmlFor="donationPurpose" className="block dark-blue-text-light mb-1">Purpose of Donation</label>
                   <select
                     id="donationPurpose"
                     name="donationPurpose"
                     value={values.donationPurpose}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="dark-blue-form-control w-full px-4 py-2 rounded-md"
                   >
                     <option value="">Where Needed Most</option>
                     <optgroup label="High Priority Needs">
@@ -592,14 +592,14 @@ const MinistryNeedsPage = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-gray-700 mb-1">Message (Optional)</label>
+                  <label htmlFor="message" className="block dark-blue-text-light mb-1">Message (Optional)</label>
                   <textarea
                     id="message"
                     name="message"
                     rows="3"
                     value={values.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="dark-blue-form-control w-full px-4 py-2 rounded-md"
                     placeholder="Any additional information or special instructions..."
                   ></textarea>
                 </div>
@@ -607,7 +607,7 @@ const MinistryNeedsPage = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#00308F] text-white py-3 rounded-md font-bold hover:bg-[#1E3A8A] transition-colors disabled:bg-[#6B7280] border-2 border-[#00308F]"
+                  className="dark-blue-button dark-blue-button-orange w-full py-3 rounded-md font-bold transition-all disabled:opacity-70"
                 >
                   {isSubmitting ? 'Processing...' : 'DONATE NOW'}
                 </button>
@@ -616,18 +616,18 @@ const MinistryNeedsPage = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="bg-[#A6CFFF] rounded-xl shadow-lg overflow-hidden">
+          <div className="dark-blue-section">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-black">Other Ways to Support</h2>
-              <p className="mb-6 text-black">
+              <h2 className="text-2xl font-bold mb-4 dark-blue-heading">Other Ways to Support</h2>
+              <p className="mb-6 dark-blue-text">
                 In addition to financial donations, we also welcome volunteers, prayer partners, and in-kind donations.
                 Contact us to learn more about how you can get involved.
               </p>
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 bg-[#00308F] text-white rounded-md font-bold hover:bg-[#1E3A8A] transition-colors shadow-md border-2 border-[#00308F]"
+                className="dark-blue-button dark-blue-button-orange inline-block px-6 py-3 rounded-md font-bold transition-all"
               >
-                <span className="text-white">CONTACT US</span>
+                CONTACT US
               </Link>
             </div>
           </div>
