@@ -1,27 +1,31 @@
-# Berakah Church Website
+# International Great Faith Ministries Website
 
-A modern, responsive website for Berakah Church built with React and Tailwind CSS.
+A modern, responsive website for International Great Faith Ministries (IGFM) built with React and Tailwind CSS.
 
 ## Overview
 
-This project is a clone of the Watoto Church website with customizations for Berakah Church. It provides a complete church website solution with pages for:
+This project is inspired by the Watoto Church website with customizations for IGFM. It provides a complete ministry website solution with pages for:
 
 - Home
 - About
-- Leadership
-- Locations
-- Cell Family
-- Generosity
+- Statement of Faith
+- Ministries (including Berakhah Childcare, Berakhah Choir, Call2Prayer Mbale Church, Pastors Network Uganda, Church Planting, Widows and Elderly Care, and Children's Church)
+- Partners
+- Stories of Impact
+- Donate
+- Prayer
+- Teaching
 - Contact
 
 ## Technologies Used
 
 - React.js
-- React Router for navigation
+- React Router (HashRouter) for navigation
 - Tailwind CSS for styling
 - React Icons for UI icons
-- Context API for state management
-- Custom hooks
+- Custom hooks for form handling and state management
+- React Google reCAPTCHA for form security
+- React Slick for image carousels and slideshows
 
 ## Features
 
